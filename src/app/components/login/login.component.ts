@@ -36,12 +36,13 @@ export class LoginComponent {
       next:(data:any)=>{
         console.log(data.body.user)
         localStorage.setItem("userData", JSON.stringify(data.body.user))
-
+        this.cookieService.set("authToken",data.token)
         location.href = "/home"
       },
       error:(error)=>{
         if(error.status==400){
           this.error = error.error.msg
+          
         }
         if(error.status==500){
           this.error = "Something went wrong, try again later"
