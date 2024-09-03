@@ -1,0 +1,29 @@
+<div class="edit-container">
+    <div class="row">
+        <div class="input-container">
+            <label for="activity_location">Activity Location</label>
+            <input disabled="true" [(ngModel)]="activityData.activity_location">
+        </div>
+        <div class="input-container">
+            <label for="activity_name">Activity Name</label>
+            <input [(ngModel)]="activityData.activity_name">
+        </div>
+
+
+    </div>
+    <div class="input-container">
+        <label for="activity_name">Location Type</label>
+        <textarea [(ngModel)]="activityData.location_type"></textarea>
+    </div>
+    <div class="description">
+        <div class="input-container">
+            <label for="activity_name">Activity Description</label>
+            <textarea [(ngModel)]="activityData.activity_description"></textarea>
+        </div>
+    </div>
+    <div class="row">
+        <button type="button" (click)="callParentAddToggle()">Cancel</button>
+        <button type="button" (click)="callParentAddActivity()">Save Changes</button>
+    </div>
+    
+</div>

@@ -1,0 +1,129 @@
+<div class="home-container">
+    <div class="trips-panel">
+        <div class="header">
+            <h3>Welcome {{user.name}}</h3>
+            <button class="create" (click)="openModal()">
+                <div class="icon">
+                    +  
+                </div>
+                <div class="create-text">
+                    Create A New Trip
+                </div>
+            </button>
+        </div>
+        <h4>Your Trips</h4>
+        <div class="trips-container">
+            @for (trip of owned_trips; track $index) {
+                <div (click)="redirectToTrip(trip._id)" class="trip-card">        
+                    
+                    <div class="trip-image">
+                        <img [src]="trip.tripModel.image.image_path" >
+                    </div>
+                    <div class="overlapper">
+                        <div class="location-header">
+                            {{trip.tripModel.location}}
+
+
+                        </div>
+                        <div class="shared shared-by">
+                        
+                            <img src="/assets/person.png" alt="">
+                             &nbsp;
+                            <b> {{trip.users.length+1}}
+                            &nbsp;</b>
+                            <span class="tooltip">
+                                Created By : You
+                            </span>
+                        </div>
+                    </div>
+                    <div class="trip-info">
+                        <div class="Name">
+                            {{trip.name}}
+                        </div>
+                        <div class="other-info">
+                            <span>$ Days</span>
+                        </div>
+                    </div>
+                    
+                </div>
+            }
+            <div class="scroll-info">
+                <p>Scroll to view more</p> 
+            </div>
+        </div>
+        
+
+        <h4>Shared Trips</h4>
+        <div class="trips-container">
+            @for (trip of shared_trips; track $index) {
+                <div (click)="redirectToTrip(trip._id)" class="trip-card">        
+                    <div class="trip-image">
+                        <img [src]="trip.tripModel.image.image_path" >
+                    </div>
+                    
+                    <div class="overlapper">
+                        <div class="location-header">
+                            {{trip.tripModel.location}}
+                        </div>
+                        <div class="shared shared-by">
+                            
+                            <img src="/assets/person.png" alt="">
+                             &nbsp;
+                            <b> {{trip.users.length+1}}
+                            &nbsp;</b>
+                            <span class="tooltip">
+                                Shared By : {{trip.owner.name}} 
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="trip-info">
+                        <span class="Name">
+                            {{trip.name}}
+                        </span>
+
+                    </div>
+                    
+                </div>
+            }
+            <div class="scroll-info">
+                <p>Scroll to view more</p> 
+            </div>
+        </div>
+    </div>
+    
+    <div class="maps-panel" [ngStyle]="mapStyles">
+        <div class="expand" >
+           <button (click)="toggleMap()"> 
+             @if (expandToggle) {
+                <img src="/assets/right.png">
+             }
+             @else {
+                <img src="/assets/left.png">
+             }
+            </button>
+        </div>
+        <div class="maps-container">
+            <google-map width="100%" height="100%"  [options]="options">
+                @for (trip of owned_trips; track $index) {
+                    <map-advanced-marker
+                      #markerElem="mapAdvancedMarker"
+                      [position]="{ lat: trip.tripModel.latandlong.lat, lng: trip.tripModel.latandlong.lng }"
+                    />
+                } 
+                @for (trip of shared_trips; track $index) {
+                    <map-advanced-marker
+                      #markerElem="mapAdvancedMarker"
+                      [position]="{ lat: trip.tripModel.latandlong.lat, lng: trip.tripModel.latandlong.lng }"
+                    />
+                } 
+            </google-map>
+        </div>
+        
+    </div>
+    
+
+    <app-create-trip-modal #modal></app-create-trip-modal>
+
+</div>

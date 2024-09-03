@@ -1,0 +1,33 @@
+.edit-container{
+    padding:1rem;
+    background-color: white;
+    border-radius: 15px;
+    width: 100%;
+    
+}
+
+.row{
+    display: flex;
+    gap:1rem;
+    width: 100%;
+    flex: 1 1 0;
+}
+
+input{
+    flex-grow: 1;
+}
+
+.select-tag{
+    display: flex;
+    gap:1rem;
+    align-items: center;
+}
+
+.select-tag img{
+    height: 50px;
+    width: 50px;
+    background-color: white;
+    border-radius: 10px;
+    padding:0.5rem;
+    border:1px solid var(--black-700)
+}

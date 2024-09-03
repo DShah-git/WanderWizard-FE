@@ -1,0 +1,21 @@
+<main>
+    <div class="info">
+        <div class="logo-container">
+            <img src="/assets/Logo.png" alt="">
+        </div>
+    </div>
+    <div class="activity">
+        <div class="selector">
+            <div class="button-selector" [ngClass]="{selectedActive: selected=='login'}" (click)="changeSelected('login')">Login</div>
+            <div class="button-selector" [ngClass]="{selectedActive: selected=='register'}" (click)="changeSelected('register')">Register</div>
+        </div>
+        <div class="form-container">
+            @if (selected=="login") {
+                <app-login></app-login>
+            }
+            @else if (selected=="register") {
+                <app-register></app-register>
+            }
+        </div>
+    </div>
+</main>

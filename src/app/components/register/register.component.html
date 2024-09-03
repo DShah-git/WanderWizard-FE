@@ -1,0 +1,48 @@
+<section>
+    
+  <h2>Log into WanderWizard</h2>
+  <form [formGroup]="registerForm" >
+
+
+    <div class="input-container">
+      <label for="name">Name</label>
+      <input type="text" id="Name" name="Name" autocomplete="off" [formControl]="registerForm.controls.name" required />
+    </div>
+      
+    <div class="input-container">
+      <label for="email">Email</label>
+      <input type="text" id="Email" name="Email" autocomplete="off" [formControl]="registerForm.controls.email" required />
+    </div>
+    
+    <div class="input-container">
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" [formControl]="registerForm.controls.password" autocomplete="off" required />
+    </div>
+    
+    <button type="submit" class="submit" (click)="register()" [disabled]="!registerForm.valid">Register</button>
+    
+    <p class="error">{{error}}</p>
+    <p class="success">{{msg}}</p>
+
+
+    @if (registerForm.controls.email.value != "" && registerForm.controls.password.value != "" ) {
+      <div>
+        @if (registerForm.controls.email.errors?.['email']) {
+          <p class="error">Invalid Email</p>
+        }
+        @else if (registerForm.controls.email.errors?.['required']||registerForm.controls.password.errors?.['required']) {
+          <p class="error">Email and Password are required</p>
+        }
+        @else if (registerForm.controls.password.errors?.['minlength']) {
+          <p class="error">Password must be minimum of 8 characters long</p>
+        }
+        @else if (registerForm.controls.name.errors?.['minlength']) {
+          <p class="error">Name must be minimum of 3 characters long</p>
+        }
+      </div>
+    }
+
+    
+    
+  </form>
+</section>

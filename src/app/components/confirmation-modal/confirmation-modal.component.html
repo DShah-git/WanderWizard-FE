@@ -1,0 +1,19 @@
+<!-- modal.component.html -->
+<div class="modal-overlay" (click)="close()" *ngIf="isVisible">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <!-- <div class="modal-header">
+        <button class="close-btn" (click)="close()">
+          <img src="/assets/add.png" style="width: 30px; height:30px; rotate: 45deg;" alt="">
+        </button>
+      </div> -->
+      <div class="modal-body">
+        <p>
+            {{message}}
+        </p>
+      </div>
+      <div class="actions">
+        <button (click)="close()">Cancel</button>
+        <button (click)="sendParentConfirmation()">Delete</button>
+      </div>
+    </div>
+  </div>

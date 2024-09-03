@@ -1,0 +1,65 @@
+<div class="edit-container">
+
+    <div class="row">
+        <div class="input-container">
+            <label for="activity_location">Activity Location</label>
+            <input [disabled]="!isActivityAdded" [(ngModel)]="activityData.activity_location">
+        </div>
+        <div class="input-container">
+            <label for="activity_name">Activity Name</label>
+            <input [(ngModel)]="activityData.activity_name">
+        </div>
+    </div>
+    @if (isActivityAdded) {
+        <div class="input-container">
+            <label for="activity_name">Location Type</label>
+            <!-- <input [(ngModel)]="activityData.location_type"> -->
+            <div class="select-tag">
+                <img [src]="'/assets/places-icon/'+activityData.location_type+'.png'" alt="">
+                <select [(ngModel)]="activityData.location_type" (ngModelChange)="onChange($event)">
+                    @for (option of options; track $index) {
+                        <option [value]="option">
+                            
+                            {{ option }}
+                        </option>
+                    }
+                </select>
+            </div>
+           
+        </div>
+    }
+    
+    <div class="description">
+        <div class="input-container">
+            <label for="activity_name">Activity Description</label>
+            <textarea [(ngModel)]="activityData.activity_description"></textarea>
+        </div>
+    </div>
+
+    <div class="row">
+        @if (isActivityAdded) {
+            <button type="button" (click)="callAddRemoveActivity()">Cancel</button>
+        }
+        @else if(AIActivityAdd){
+            <button type="button" (click)="callAddRemoveActivity()">Cancel</button>
+        }
+        @else {
+            <button type="button" (click)="callParentEditToggle()">Cancel</button>
+        }
+        
+        <button type="button" (click)="callParentUpdateActivity()">
+            @if (isActivityAdded) {
+                Add
+            }
+            @else if (AIActivityAdd) {
+                Save AI Suggestion
+            }
+            @else {
+                Make Changes
+            }
+        </button>
+    </div>
+
+
+    
+</div>

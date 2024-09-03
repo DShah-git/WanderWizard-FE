@@ -1,0 +1,214 @@
+<div class="container">
+    <div class="header">
+        <div class="info-header">
+            <div class="image-container">
+                <img [src]="trip.tripModel.image.image_path" alt="" srcset="">
+            </div>
+            <div class="info-container">
+                <div style="font-size: 1rem; font-weight: 400;">
+                    {{trip.tripModel.days.days}} days
+                </div>
+                <div style="font-size: 1.5rem; font-weight: 500;">
+                   {{trip.location}}
+                </div> 
+               <div style="font-size: 3rem; font-weight:600;">
+                {{trip.name}}
+               </div>
+                
+               
+            </div>
+        </div>
+        <div class="map-header">
+            <google-map width="100%" height="100%"  [options]="options" [center]="{lat: trip.tripModel.latandlong.lat, lng: trip.tripModel.latandlong.lng}">
+                <map-advanced-marker
+                      #markerElem="mapAdvancedMarker"
+                      [position]="{ lat: trip.tripModel.latandlong.lat, lng: trip.tripModel.latandlong.lng }"
+                    />
+            </google-map>
+        </div>
+    </div>
+
+    <div class="trip-container">
+        <div class="trip-planner">
+            <!-- {{tempData}} -->
+            <div class="days-info">
+                <h2>Trip Itinerary</h2>
+               <div class="dates">
+                    <div class="date">
+                        <img src="/assets/calendar.png" alt="">  
+                        {{trip.tripModel.days.startDate}} 
+                    </div>
+                    <div>
+                        <b> - </b>
+                    </div>
+                    <div class="date">
+                        <img src="/assets/calendar.png" alt="">
+                        {{trip.tripModel.days.endDate}}
+                    </div>
+               </div>
+            </div> 
+            @for (day of tripDays; track $index; let dayIDX = $index) {
+                <div class="day-card">
+                    <div class="day-header" (click)="openInfo(dayIDX)">
+                        <div >
+                            <span class="index">{{day.day}}</span> 
+                            <span>{{day.date}}  </span> 
+                        </div>
+                        <div>
+                            <img src="/assets/right.png" alt="">
+                        </div>
+                    </div>
+                   
+                    <div cdkDropListGroup>
+                    
+                    <div 
+                    cdkDropList 
+                    [cdkDropListData]="day.activity"
+                    (cdkDropListDropped)="drop($event,$index)" 
+                    class="day-info" [ngClass]="{'days-info-open':day.active}">
+                    @if (day.image.image_path){
+                        <div class="day-image-container" 
+                        *ngIf="day.active"
+                        [ngStyle]="{'height':day.image_active?'300px':'100px'}">
+                            <button c class="close-image" (click)="hideImage($index)">
+                               @if (day.image_active) {
+                                Hide
+                               }
+                               @else {
+                                Show Image
+                               }
+                                
+                            </button>
+                            <img [src]="day.image.image_path" alt="" *ngIf="day.image_active">
+                        </div>
+                    }
+                        @for (activity of day.activity; track $index; let activityIDX = $index) {
+                        <div class="activity-card" cdkDrag
+                        (cdkDragStarted)="dragStarted($event)"
+                        (cdkDragEnded)="dragEnded($event)"
+                        >
+                        @if (activity.editActivityActive==false) {
+                            <div class="rearrange">
+                                <img src="/assets/arrange.png" alt="">
+                            </div>
+                            <div class="activity-container">
+                                <div class="icon">
+                                   <img [src]="'/assets/places-icon/'+activity.location_type+'.png'" alt="icon">
+                                </div>
+                                <div class="activity-info">
+                                    <div class="location-name"> <span style="color:rgb(114, 117, 255)"> {{ activity.activity_location }}</span> | {{ activity.activity_name }}   </div>
+                                    
+                                    <div class="location-description"> {{ activity.activity_description }}   </div>
+                                </div>
+                            </div>
+                            <div class="actions">
+                                <button class="action-button edit" >
+                                    <img src="/assets/edit.png" alt="" (click)="editToggle(dayIDX,activityIDX)">
+                                </button>
+                                <button class="action-button delete">
+                                    <img src="/assets/delete.png" alt="" (click)="deleteActivity(dayIDX,activityIDX)">
+                                </button>
+                                <div class="add-activity-buttons">
+                                    <button class="action-button add" (click)="addActivity(dayIDX,activityIDX)">
+                                        <img src="/assets/add2.png" alt="">
+                                    </button>
+                                    <button class="add askAI" (click)="askAItoAdd(dayIDX,activityIDX)">
+                                        <img src="/assets/add2.png" alt=""> Ask AI
+                                    </button>
+                                </div>
+                                
+                            </div>
+                            }
+                            @else{
+                            <div style="width: 100%;">
+                                <app-edit-activity (editToggle)="editToggle(dayIDX,activityIDX)" (updateActivity)="updateActivity(dayIDX,activityIDX)"  (removeActivity)="removeIdAddNotComplete(dayIDX,activityIDX)" [activityData]="activity" ></app-edit-activity>
+                            </div>
+                            }
+                          </div>
+                          
+                            
+                          
+                            
+                        }
+                    </div>
+                </div>
+            </div>
+            }
+        </div>
+        <div class="share-section">
+            <h3>People on this trip</h3>
+            @for (user of trip.users; track $index) {
+                <div class="user">
+                    <div class="left">
+                        <div class="profile-photos">
+                            <img [src]="user.image" alt="">
+                        </div>
+                        <div class="profile-info">
+                            <div class="profile-name">{{user.name}}</div>
+                            <div class="profile-email">{{user.email}}</div>
+                        </div>
+                    </div>
+                    
+                    
+                </div>
+            }
+            <div class="user">
+                <div class="left">   
+                    <div class="profile-photos">
+                        <img [src]="trip.owner.image" alt="">
+                    </div>
+                    <div class="profile-info">
+                        <div class="profile-name">You</div>
+                    </div>
+                </div>
+            </div>
+            @if (trip.tripModel.sharedView == false) {
+                <div class="add-input" >
+                
+                    @if (searchInput==false) {
+                        
+                        <div class="input-inactive" (click)="activateSearch()">
+                            <h4>Click to add a user to this trip</h4>
+                        </div>
+                    }
+                    @else {
+                        <div class="input-active">
+                            <input type="text" name="search" autocomplete="false" id="search" [(ngModel)]="searchText"  (ngModelChange)="onSearchTextChange($event)">
+                        </div>
+                    }
+                    <div  (click)="toggleSearch()">
+                        <img src="/assets/add.png" class="search-icon" [ngClass]="{rotate45: searchInput}">
+                    </div>
+                    
+                </div>
+            }
+            
+            @if (searchResult.length>0) {
+    
+                <div class="searchList-container">
+                    @for (user of searchResult; track $index) {
+                        <div class="user darker">
+                            <div class="left">
+                                <div class="profile-photos">
+                                    <img [src]="user.image" alt="">
+                                </div>
+                                <div class="profile-info">
+                                    <div class="profile-name">{{user.name}}</div>
+                                    <div class="profile-email">{{user.email}}</div>
+                                </div>
+                            </div>
+                            
+                            <div class="right">
+                                <img src="/assets/add.png" class="add-icon" (click)="addUser(user)">
+                            </div>
+                            
+                        </div>
+                        
+                    }
+                </div>
+            }
+        </div>
+    </div>
+
+    <app-aisuggestions-modal #modal [inputData]="AISuggestions" [loading]="AILoading" (addSuggestion)="addSuggestion($event)"></app-aisuggestions-modal>
+</div>

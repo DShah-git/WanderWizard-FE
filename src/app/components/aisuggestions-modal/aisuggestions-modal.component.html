@@ -1,0 +1,44 @@
+<!-- modal.component.html -->
+<div class="modal-overlay" (click)="close()" *ngIf="isVisible">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <div class="modal-header" *ngIf="loading">
+      <b>Fetching some suggestions</b>
+      <button class="close-btn" (click)="close()">
+        <img src="/assets/add.png" style="width: 30px; height:30px; rotate: 45deg;" alt="">
+      </button>
+    </div>
+    <div class="modal-header" *ngIf="!loading">
+      <b>Here are some suggestions for the day</b>
+      <button class="close-btn" (click)="close()">
+        <img src="/assets/add.png" style="width: 30px; height:30px; rotate: 45deg;" alt="">
+      </button>
+    </div>
+    <div class="modal-body" *ngIf="!loading">
+      
+      <p>AI Suggested places might be already added to Itinerary, please double check itinerary to avoid unexpected errors</p>
+      
+      @for (activity of inputData; track $index; let idx=$index) {
+      <div class="activity-card">
+
+        <div class="activity-container">
+          <div class="icon">
+            <img [src]="'/assets/places-icon/'+activity.location_type+'.png'" alt="icon">
+          </div>
+          <div class="activity-info">
+            <div class="location-name"> <span style="color:rgb(114, 117, 255)"> {{ activity.activity_location }}</span>
+              | {{ activity.activity_name }} </div>
+
+            <div class="location-description"> {{ activity.activity_description }} </div>
+          </div>
+        </div>
+        <div class="actions">
+          <button (click)="callParentAddSuggestion(idx)">
+            <img src="/assets/add.png" alt="">
+            Add
+          </button>
+        </div>
+      </div>
+      }
+    </div>
+  </div>
+</div>

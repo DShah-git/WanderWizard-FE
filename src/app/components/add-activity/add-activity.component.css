@@ -1,0 +1,18 @@
+.edit-container{
+    padding:1rem;
+    background-color: white;
+    border-radius: 15px;
+    width: 100%;
+    
+}
+
+.row{
+    display: flex;
+    gap:1rem;
+    width: 100%;
+    flex: 1 1 0;
+}
+
+input{
+    flex-grow: 1;
+}

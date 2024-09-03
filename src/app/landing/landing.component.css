@@ -1,0 +1,62 @@
+main{
+    display: flex;
+
+    background: var(--black-gradient);
+}
+
+.info{
+
+    width: 55%;
+    color: #f0ffff;
+    display: flex;
+    padding-top:10%;
+    justify-content: center;
+}
+
+.logo-container{
+    padding: 2rem;
+    background-color: var(--white);
+    border-radius: 20px;
+    width: 60%;
+    height: max-content;
+}
+
+.logo-container>img{
+    width: 100%;
+}
+
+.activity{
+    background-color: var(--white);
+    width: 45%;
+    border-radius: 20px;
+    display: flex;
+    padding-top:7%;
+    margin:1rem;
+    align-items: center;
+    gap:2rem;
+    flex-direction: column;
+    text-align: center;
+}
+
+.selector{
+    display: flex;
+    gap: 3rem;
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+
+.button-selector{
+    background-color: var(--white);
+    border:2px solid var(--black);
+    padding:1rem 1.5rem;
+    width: max-content;
+    height: max-content;
+    border-radius: 15px;
+    cursor: pointer ;
+    font-weight: 600;
+}
+
+.selectedActive{
+    background-color: var(--black);
+    color: white;
+}

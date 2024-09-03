@@ -1,0 +1,307 @@
+.home-container{
+    margin:2rem 4rem;
+    display: flex;
+    flex: 1 1 0;
+    gap:1rem;
+}
+
+h3{
+    color: var(--black-900);
+    margin:0;
+    padding:0
+}
+
+h4{
+    color: var(--black-700);
+    margin:0;
+    padding:0
+}
+
+.trips-panel{
+    width: 70%;
+}
+
+
+.header{
+    margin-bottom:1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.create{
+    padding:0.5rem 1rem;
+    background-color: white;
+    border-radius: 10px;
+    border:3px solid black;
+    font-size: 2rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap:0.5rem;
+    transition: 0.4s ease-in-out;
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+}
+
+
+.create:hover{
+    width: 200px;
+    height: 50px;
+}
+
+.create:hover > .create-text{
+    opacity:1;
+}
+
+.icon{
+    transform: translateX(79px);
+    transition: 0.4 ease-in-out;
+}
+
+.create:hover>.icon{
+    transform: translateX(0px);
+}
+
+
+.create-text{
+    font-size: 1.1rem;
+    opacity:0;
+    text-wrap: nowrap;
+}
+
+
+.trips-container{
+    margin-block:1rem;
+    padding-block: 1rem;
+    padding:0.5rem;
+    height: 290px;
+    overflow-y: scroll;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    gap:1rem;
+    box-shadow: inset 0 -3px 20px -20px #000000;
+    border-radius: 10px;
+    width: 100%;
+    position: relative;
+    width: 100%;
+}
+
+.trips-container:hover{
+    box-shadow: inset 0 -10px 20px -20px #000000;
+}
+
+.trip-card{
+    width: 23%;
+    height: 270px;
+    border-radius: 15px;
+    /* box-shadow: var(--box-shadow-1); */
+    overflow: hidden;
+    position:relative;
+}
+
+.trip-card:hover{
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+
+.trip-image{
+    width: 100%;
+    height: 70%;
+    position: relative;
+    display: inline-block;
+}
+
+.trip-image::after{
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    box-shadow: inset 10px 24px 40px 10px rgba(0, 0, 0, 0.253);
+                
+}
+
+.scroll-info{
+    display: none;
+    position: fixed;
+    width: 90%;
+
+    
+}
+
+.scroll-info p{
+    background-color: var(--black-700);
+    padding:0.25rem 0.5rem;
+    font-size: 1.1rem;
+    width: max-content;
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+    transform: translateX(430px) translateY(240px);
+    opacity: 0.5;
+}
+
+.trips-container:hover>.scroll-info{
+    display: block;
+}
+
+
+
+.trip-image img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+
+
+.overlapper{
+    width: 100%;
+    height: max-content;
+    background: rgb(0,0,0);
+    background: linear-gradient(45deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0) 100%);
+    transform: translateY(-110%);
+    position: absolute;
+    border-radius: 0px 0px 15px 15px;
+    padding:0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.trip-card:hover .delete{
+    display: block;
+}
+
+.delete{
+    display: none;
+    padding:0.25rem;
+    border: 2px solid red;
+    background-color: rgb(255, 0, 0);
+}
+
+.delete:hover{
+    transform: scale(1.1);
+}
+
+.delete img{
+    width: 20px;
+    aspect-ratio: 1/1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.location-header{
+    color: var(--white);
+    font-weight: 600;
+    font-size: 0.8rem;
+    margin-bottom:0.5rem;
+    padding-inline: 0.25rem;
+}
+
+.shared{
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    color:white;
+    background-color: var(--black-900);
+    padding:0.25rem 0.5rem;
+    border-radius: 10px;
+    width: max-content;
+    transition: 0.3s ease-in-out;
+    border:2px solid var(--white)
+}
+
+
+.shared>img{
+    height: 20px;
+    width: 20px;
+    cursor: pointer;
+  
+}
+
+.tooltip{
+    display: none;
+}
+
+.shared:hover .tooltip{
+    display: block;
+    user-select: none;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+
+.trip-info{
+    margin:0.25rem;
+}
+
+.Name{
+    font-weight: 700;
+    font-size: 1.25rem;
+    columns: var(--black-700);
+}
+
+.other-info{
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--black-300);       
+}
+
+
+.maps-panel{
+    background-color: var(--black-300);
+    width: 40%;
+    border-radius: 20px;
+    overflow: hidden;
+    display: flex;
+    gap:0.5rem;
+    align-items: center;
+    position: relative;
+    transition: 0.4s ease-in-out;
+}
+
+.maps-container{
+    width: 100%;
+    height: 100%;
+    transition: 0.4s ease-in-out;
+
+}
+
+
+.expand{
+    position: absolute;
+    z-index: 100;
+  
+}
+
+.expand>button{
+    padding: 1rem;
+    border-radius: 50%;
+    background-color: white;
+    border: 0px;
+    box-shadow: var(--box-shadow-1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left:0.5rem;
+}
+
+
+.expand>button>img{
+    height: 15px;
+    width: 15px;
+}
+

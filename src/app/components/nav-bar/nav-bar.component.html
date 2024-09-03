@@ -1,0 +1,37 @@
+@if (isLoggedIn==true) {
+    <div class="nav-bar-container">
+        <div class="logo">
+            <img src="/assets/Logo.png" alt="">
+        </div>
+        <div class="links">
+            <a href="/home">Home</a>
+            <a href="">Community Trips <span style="font-size: 1.1rem;"> (Coming soon) </span></a>
+        </div>
+        <div class="profile">
+            <div class="profile-image" (click)="toggleDropDown()">
+                <img [src]="userData.image" alt="profile">
+                <div class="icon">
+                    <img src="/assets/down-arrow.svg"  alt="profile">
+                </div>
+            </div>
+           @if (dropDownActive) {
+            <div class="dropdown"> 
+                <div class="info">
+                    {{userData.name}}
+                </div>
+                <div class="action-container">
+                    <div (click)="profile()" class="action">
+                        Profile
+                    </div>
+                    <div (click)="logout()" class="action">
+                       Logout
+                    </div>
+                </div>   
+            </div>
+           }
+            
+        </div>
+        
+    </div>
+}
+

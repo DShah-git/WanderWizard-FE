@@ -1,0 +1,38 @@
+<section>
+    
+    <h2>Log into WanderWizard</h2>
+    <form [formGroup]="loginForm" >
+
+        
+      <div class="input-container">
+        <label for="username">Email</label>
+        <input type="text" id="Email" name="Email" autocomplete="off" [formControl]="loginForm.controls.email" required />
+      
+      </div>
+      
+      <div class="input-container">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" [formControl]="loginForm.controls.password" autocomplete="off" required />
+      </div>
+      
+      <button type="submit" class="submit" (click)="login()" [disabled]="!loginForm.valid">Log In</button>
+      
+      <p class="error">{{error}}</p>
+      @if (loginForm.controls.email.value != "" && loginForm.controls.password.value != "" ) {
+        <div>
+          @if (loginForm.controls.email.errors?.['email']) {
+            <p class="error">Invalid Email</p>
+          }
+          @else if (loginForm.controls.email.errors?.['required']||loginForm.controls.password.errors?.['required']) {
+            <p class="error">Email and Password are required</p>
+          }
+          @else if (loginForm.controls.password.errors?.['minlength']) {
+            <p class="error">Password must be minimum of 8 characters long</p>
+          }
+        </div>
+      }
+
+      
+      
+    </form>
+</section>
