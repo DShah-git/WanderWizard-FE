@@ -7,6 +7,8 @@ import { NgStyle } from '@angular/common';
 import { CreateTripModalComponent } from "../components/create-trip-modal/create-trip-modal.component";
 import { ConfirmationModalComponent } from "../components/confirmation-modal/confirmation-modal.component";
 
+
+
 @Component({
   selector: 'app-home',
   standalone: true,

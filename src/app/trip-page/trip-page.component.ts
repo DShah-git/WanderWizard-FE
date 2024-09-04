@@ -8,6 +8,8 @@ import { UserService } from '../services/user.service';
 import { EditActivityComponent } from "../components/edit-activity/edit-activity.component";
 import { AISuggestionsModalComponent } from "../components/aisuggestions-modal/aisuggestions-modal.component";
 import { CdkDragDrop, DragDropModule, moveItemInArray } from '@angular/cdk/drag-drop';
+import {Title} from "@angular/platform-browser";
+
 
 @Component({
   selector: 'app-trip-page',
@@ -33,9 +35,9 @@ export class TripPageComponent {
   } 
 
 
-  constructor(private route: ActivatedRoute,private tripService:TripService,private userService:UserService){
+  constructor(private route: ActivatedRoute,private tripService:TripService,private userService:UserService,private titleService:Title){
     this.trip_id=""
-   
+
   }
 
 
@@ -47,7 +49,8 @@ export class TripPageComponent {
       this.tripService.getTrip(this.trip_id).subscribe({
         next:(data)=>{
           this.trip = data
-          console.log(this.trip.tripModel)
+          
+          console.log(this.trip)
           this.storeTripDataforUI(0)  
         },
         error:()=>{}
@@ -167,7 +170,7 @@ export class TripPageComponent {
   storeTripDataforUI(openIDX:number){
     this.tripDays = this.trip.tripModel.trip
     this.tempData = JSON.stringify(this.tripDays)
-    
+    this.titleService.setTitle(this.trip.location + " - Wander Wizard");
     for(let i=0;i<this.tripDays.length;i++){
       if(i==0) {
         this.tripDays[i].active = true;
