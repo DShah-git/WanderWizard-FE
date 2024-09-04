@@ -34,9 +34,9 @@ export class LoginComponent {
     this.userService.login(email,password)
     .subscribe({
       next:(data:any)=>{
-        console.log(data.body.user)
+        console.log(data)
         localStorage.setItem("userData", JSON.stringify(data.body.user))
-        this.cookieService.set("authToken",data.token)
+        this.cookieService.set("authToken",data.body.token)
         location.href = "/home"
       },
       error:(error)=>{
