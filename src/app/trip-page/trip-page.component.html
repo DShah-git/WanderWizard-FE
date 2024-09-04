@@ -66,7 +66,7 @@
                     [cdkDropListData]="day.activity"
                     (cdkDropListDropped)="drop($event,$index)" 
                     class="day-info" [ngClass]="{'days-info-open':day.active}">
-                    @if (day.image.image_path){
+                    <!-- @if (day.image.image_path){
                         <div class="day-image-container" 
                         *ngIf="day.active"
                         [ngStyle]="{'height':day.image_active?'300px':'100px'}">
@@ -81,7 +81,7 @@
                             </button>
                             <img [src]="day.image.image_path" alt="" *ngIf="day.image_active">
                         </div>
-                    }
+                    } -->
                         @for (activity of day.activity; track $index; let activityIDX = $index) {
                         <div class="activity-card" cdkDrag
                         (cdkDragStarted)="dragStarted($event)"
