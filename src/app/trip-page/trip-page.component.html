@@ -88,17 +88,20 @@
                         (cdkDragEnded)="dragEnded($event)"
                         >
                         @if (activity.editActivityActive==false) {
-                            <div class="rearrange">
-                                <img src="/assets/arrange.png" alt="">
-                            </div>
-                            <div class="activity-container">
-                                <div class="icon">
-                                   <img [src]="'/assets/places-icon/'+activity.location_type+'.png'" alt="icon">
+                            <div class="activity-left">
+                        
+                                <div class="rearrange">
+                                    <img src="/assets/arrange.png" alt="">
                                 </div>
-                                <div class="activity-info">
-                                    <div class="location-name"> <span style="color:rgb(114, 117, 255)"> {{ activity.activity_location }}</span> | {{ activity.activity_name }}   </div>
-                                    
-                                    <div class="location-description"> {{ activity.activity_description }}   </div>
+                                <div class="activity-container">
+                                    <div class="icon">
+                                    <img [src]="'/assets/places-icon/'+activity.location_type+'.png'" alt="icon">
+                                    </div>
+                                    <div class="activity-info">
+                                        <div class="location-name"> <span style="color:rgb(114, 117, 255)"> {{ activity.activity_location }}</span> | {{ activity.activity_name }}   </div>
+                                        
+                                        <div class="location-description"> {{ activity.activity_description }}   </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="actions">

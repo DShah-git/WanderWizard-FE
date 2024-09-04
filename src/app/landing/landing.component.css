@@ -1,6 +1,5 @@
 main{
     display: flex;
-
     background: var(--black-gradient);
 }
 
@@ -59,4 +58,18 @@ main{
 .selectedActive{
     background-color: var(--black);
     color: white;
+}
+
+@media only screen and (max-width: 600px) {
+    main{
+        flex-direction: column;
+    }
+
+    .info{
+        width: 100%;
+    }
+
+    .activity{
+        width: 90%;
+    }
 }

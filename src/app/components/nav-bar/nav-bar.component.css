@@ -131,3 +131,34 @@ a:hover{
     font-weight: 600;
     color: black;
 }
+
+@media only screen and (max-width: 600px) {
+    
+    .nav-bar-container{
+        padding:0.5rem 1rem;
+    }
+    
+    .logo{
+        width: 80px;
+    }
+
+    a{
+        font-size: 1rem;
+    }
+
+    .profile-image{
+        width: 30px;
+        height: 30px;
+    }
+
+    .icon{
+        display: none;
+    }
+
+    .dropdown{
+        transform: translateX(-155px) translateY(100px);
+    }
+
+    
+    
+}

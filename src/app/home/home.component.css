@@ -305,3 +305,35 @@ h4{
     width: 15px;
 }
 
+@media only screen and (max-width: 600px) {
+    .home-container{
+        margin:1rem;
+        flex-direction: column;
+    }
+
+    .trips-panel{
+        width: 100%;
+    }
+
+    h3{
+        font-size: 1.5rem;
+    }
+
+    h4{
+        font-size: 1.1rem;
+    }
+    
+    .header{
+        margin-bottom:0rem;
+    }
+
+    .trips-container{
+        width: 100%;
+        margin-block:0.5rem;
+    }
+
+    .trip-card{
+        width: 43%;
+    }
+    
+}

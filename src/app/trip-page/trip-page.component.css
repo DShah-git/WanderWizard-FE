@@ -330,7 +330,6 @@ h4{
 
 .day-image-container{
     width: 100%;
-
     padding:1rem;
     border-radius: 15px;
     overflow: hidden;
@@ -524,6 +523,12 @@ h4{
     scale: 1.1;
 }
 
+.activity-left{
+    display: flex;
+    gap:1rem;
+    align-items: center;
+}
+
 .rearrange{
     cursor:move;
 }
@@ -543,3 +548,60 @@ h4{
     border: 2px dashed #ccc;    /* Dashed border */
     background: none;          
   }
+
+@media only screen and (max-width: 600px) {
+ 
+    .header{
+        flex-direction: column;
+    } 
+
+    .header div{
+        width: 90%;
+
+    }
+
+    .trip-container{
+        flex-direction: column;
+    }
+
+    .trip-container>div{
+        width: 100%;
+    }
+
+    .days-info{
+        flex-direction: column;
+        padding:0.5rem;
+        gap:0rem;
+        justify-content: center;
+
+    }
+
+    .days-info h2{
+        font-size: 1.5rem;
+        padding:0;
+        margin:0;
+    }
+
+    .dates>div{
+        font-size: 0.8rem;
+        font-weight: 500;
+    }
+
+    .day-card{
+        margin-block:0.5rem;
+    }
+
+    .activity-container{
+        padding:0.25rem;
+        width: 100%;
+    }
+
+    .activity-card{
+        flex-direction: column;
+    }
+
+    .actions{
+        display: flex;
+        flex-direction: row;
+    }
+}
