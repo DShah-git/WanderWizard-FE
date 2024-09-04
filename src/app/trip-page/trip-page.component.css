@@ -421,7 +421,7 @@ h4{
     background-color: white;
     padding:0.5rem 1rem;
     border-radius: 15px;
-    width: 80%;
+    width: 100%;
 }
 
 .activity-info{
@@ -527,6 +527,7 @@ h4{
     display: flex;
     gap:1rem;
     align-items: center;
+    width: 80%;
 }
 
 .rearrange{
@@ -591,17 +592,26 @@ h4{
         margin-block:0.5rem;
     }
 
+
+
+    .activity-card{
+        flex-direction: column;
+        width: 100%;
+        align-items: flex-start;
+    }
+
+    .activity-left{
+        width: 100%;
+    }
+
     .activity-container{
         padding:0.25rem;
         width: 100%;
     }
 
-    .activity-card{
-        flex-direction: column;
-    }
-
     .actions{
         display: flex;
         flex-direction: row;
+        align-self: center;
     }
 }
