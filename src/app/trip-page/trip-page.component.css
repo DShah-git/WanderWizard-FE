@@ -532,6 +532,11 @@ h4{
 
 .rearrange{
     cursor:move;
+    display: none;
+}
+
+.activity-card:hover .rearrange{
+    display: block;
 }
 
 .cdk-drag-preview {
@@ -614,4 +619,9 @@ h4{
         flex-direction: row;
         align-self: center;
     }
+
+    .rearrange{
+        display: block;
+    }
+    
 }
