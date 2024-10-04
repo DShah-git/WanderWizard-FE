@@ -1,20 +1,21 @@
 import { Component, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { TripService } from '../services/trip.service';
+import { TripService } from '../../services/trip.service';
 import { GoogleMapsModule } from "@angular/google-maps";
 import { CommonModule, NgClass } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { UserService } from '../services/user.service';
-import { EditActivityComponent } from "../components/edit-activity/edit-activity.component";
-import { AISuggestionsModalComponent } from "../components/aisuggestions-modal/aisuggestions-modal.component";
+import { UserService } from '../../services/user.service';
+import { EditActivityComponent } from "../../components/edit-activity/edit-activity.component";
+import { AISuggestionsModalComponent } from "../../components/aisuggestions-modal/aisuggestions-modal.component";
 import { CdkDragDrop, DragDropModule, moveItemInArray } from '@angular/cdk/drag-drop';
 import {Title} from "@angular/platform-browser";
+import { TripItineraryComponent } from "../../components/trip-itinerary/trip-itinerary.component";
 
 
 @Component({
   selector: 'app-trip-page',
   standalone: true,
-  imports: [GoogleMapsModule, NgClass, FormsModule, EditActivityComponent, AISuggestionsModalComponent,DragDropModule,CommonModule ],
+  imports: [GoogleMapsModule, NgClass, FormsModule, EditActivityComponent, AISuggestionsModalComponent, DragDropModule, CommonModule, TripItineraryComponent],
   templateUrl: './trip-page.component.html',
   styleUrl: './trip-page.component.css'
 })

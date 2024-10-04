@@ -1,18 +1,18 @@
 import { Component } from '@angular/core';
-import { LoginComponent } from '../components/login/login.component';
-import { RegisterComponent } from '../components/register/register.component';
+import { LoginComponent } from '../../components/login/login.component';
+import { RegisterComponent } from '../../components/register/register.component';
 import { CommonModule, NgClass } from '@angular/common';
-import { UserService } from '../services/user.service';
+import { UserService } from '../../services/user.service';
 
 
 @Component({
-  selector: 'app-landing',
+  selector: 'app-auth-page',
   standalone: true,
   imports: [LoginComponent, RegisterComponent,NgClass],
-  templateUrl: './landing.component.html',
-  styleUrl: './landing.component.css'
+  templateUrl: './auth-page.component.html',
+  styleUrl: './auth-page.component.css'
 })
-export class LandingComponent {
+export class AuthPageComponent {
   
   selected:string = "login"
 

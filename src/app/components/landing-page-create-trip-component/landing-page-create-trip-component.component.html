@@ -1,0 +1,84 @@
+<!-- modal.component.html -->
+<div class="modal-overlay" (click)="close()" *ngIf="isVisible">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <div class="modal-header">
+      <h2>Lets start planning your trip.</h2>
+      <button class="close-btn" (click)="close()">
+        <img src="/assets/add.png" style="width: 30px; height:30px; rotate: 45deg;" alt="">
+      </button>
+    </div>
+    <div class="modal-body">
+      <form [formGroup]="tripForm">
+        <div class="input-container">
+          <label for="Trip Location">Where would you like to go? </label>
+          <input type="text" autocomplete="off" required [formControl]="tripForm.controls.location"
+            placeholder="Enter name of country, city or a place." />
+        </div>
+        <div class="input-container">
+          <label for="Trip Name">Give your trip a name.</label>
+          <input type="text" autocomplete="off" required [formControl]="tripForm.controls.name" />
+        </div>
+
+
+
+
+        <div class="input-container">
+          <label>What days would you like to go.</label>
+
+          <div class="date-range-picker">
+
+            <div class="input-container">
+              
+              <input type="date" autocomplete="off" required [formControl]="tripForm.controls.startDate"
+                [min]="currentDate" />
+            </div>
+            <div class="input-container">
+              
+              <input type="date" autocomplete="off" required [formControl]="tripForm.controls.endDate"
+                [min]="this.tripForm.value.startDate" />
+            </div>
+          </div>
+        </div>
+
+        <div class="input-container">
+          <label for="activity_level">Select the level of activities</label>
+          <div class="activity-buttons">
+            <button (click)="selectActivity(0)" [ngClass]="{'selectedActivity': activityLevel==0}">I want a relaxing
+              trip</button>
+            <button (click)="selectActivity(1)" [ngClass]="{'selectedActivity': activityLevel==1}">I want a balanced
+              trip</button>
+            <button (click)="selectActivity(2)" [ngClass]="{'selectedActivity': activityLevel==2}">I wanna to explore
+              more</button>
+          </div>
+        </div>
+        <div class="modal-footer">
+          @if (createLoading==false) {
+          <button (click)="submitTrip()" [disabled]="!this.tripForm.valid">
+            Create
+          </button>
+          }
+          <div *ngIf="createLoading" style="text-align: center;">Creating your trip, this might take a sec....</div>
+          <div class="loader" *ngIf="createLoading">
+
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+              <circle fill="#000000" stroke="#000000" stroke-width="15" r="15" cx="40" cy="100">
+                <animate attributeName="opacity" calcMode="spline" dur="2" values="1;0;1;"
+                  keySplines=".5 0 .5 1;.5 0 .5 1" repeatCount="indefinite" begin="-.4"></animate>
+              </circle>
+              <circle fill="#000000" stroke="#000000" stroke-width="15" r="15" cx="100" cy="100">
+                <animate attributeName="opacity" calcMode="spline" dur="2" values="1;0;1;"
+                  keySplines=".5 0 .5 1;.5 0 .5 1" repeatCount="indefinite" begin="-.2"></animate>
+              </circle>
+              <circle fill="#000000" stroke="#000000" stroke-width="15" r="15" cx="160" cy="100">
+                <animate attributeName="opacity" calcMode="spline" dur="2" values="1;0;1;"
+                  keySplines=".5 0 .5 1;.5 0 .5 1" repeatCount="indefinite" begin="0"></animate>
+              </circle>
+            </svg>
+          </div>
+        </div>
+        <p *ngIf="!this.tripForm.valid" class="error">All Fields are required</p>
+        <p *ngIf="errMessage.length>0" class="error">{{this.errMessage}}</p>
+      </form>
+    </div>
+  </div>
+</div>

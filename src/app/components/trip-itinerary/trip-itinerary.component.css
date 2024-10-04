@@ -442,6 +442,8 @@ h4{
     margin-top: 0.25rem;
 }
 
+
+
 .actions{
     
     gap:0.5rem;
@@ -451,7 +453,7 @@ h4{
 }
 
 
-.activity-card:hover .actions{
+.activity-card:hover .actions, .askAI{
     display: flex;
     
 }
@@ -541,7 +543,7 @@ h4{
 
 .cdk-drag-preview {
 
-    transform: rotate(5deg);    
+    transform: rotate(1deg);    
     box-shadow: var(--box-shadow-1);
     border-radius: 15px;
     rotate: 5deg;

@@ -47,7 +47,8 @@
                             {{trip.name}}
                         </div>
                         <div class="other-info">
-                            {{trip.tripModel.days.days}} Days | {{trip.tripModel.days.startDate}} - {{trip.tripModel.days.endDate}}
+                        {{ trip.tripModel.days.startDate | date:'mediumDate'}} -  {{trip.tripModel.days.endDate | date:'mediumDate'}}
+                            |  {{trip.tripModel.days.days}} Days
                         </div>
                     </div>
                     
