@@ -30,9 +30,9 @@
 
     <div class="trip-container">
         <div class="trip-planner">
-            <!-- {{tempData}} -->
+           
             <div class="days-info">
-                <h2>Trip Itinerary</h2>
+            <h2>Trip Itinerary</h2>
                <div class="dates">
                     <div class="date">
                         <img src="/assets/calendar.png" alt="">  
@@ -90,9 +90,7 @@
                         @if (activity.editActivityActive==false) {
                             <div class="activity-left">
                         
-                                <div class="rearrange" cdkDragHandle>
-                                    <img src="/assets/arrange.png" alt="">
-                                </div>
+                                
                                 <div class="activity-container">
                                     <div class="icon">
                                     <img [src]="'/assets/places-icon/'+activity.location_type+'.png'" alt="icon">
@@ -103,6 +101,9 @@
                                         <div class="location-description"> {{ activity.activity_description }}   </div>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="rearrange" cdkDragHandle>
+                                <img src="/assets/arrange.png" alt="">
                             </div>
                             <div class="actions">
                                 <button class="action-button edit" >
@@ -213,5 +214,5 @@
         </div>
     </div>
 
-    <app-aisuggestions-modal #modal [inputData]="AISuggestions" [loading]="AILoading" (addSuggestion)="addSuggestion($event)"></app-aisuggestions-modal>
+   
 </div>

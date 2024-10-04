@@ -1,18 +1,18 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { NavBarComponent } from "../components/nav-bar/nav-bar.component";
-import { TripService } from '../services/trip.service';
-import { User } from '../models/user.model';
+import { NavBarComponent } from "../../components/nav-bar/nav-bar.component";
+import { TripService } from '../../services/trip.service';
+import { User } from '../../models/user.model';
 import { GoogleMapsModule } from "@angular/google-maps";
-import { NgStyle } from '@angular/common';
-import { CreateTripModalComponent } from "../components/create-trip-modal/create-trip-modal.component";
-import { ConfirmationModalComponent } from "../components/confirmation-modal/confirmation-modal.component";
+import { CommonModule, NgStyle } from '@angular/common';
+import { CreateTripModalComponent } from "../../components/create-trip-modal/create-trip-modal.component";
+import { ConfirmationModalComponent } from "../../components/confirmation-modal/confirmation-modal.component";
 
 
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [NavBarComponent, GoogleMapsModule, NgStyle, CreateTripModalComponent, ConfirmationModalComponent],
+  imports: [NavBarComponent, GoogleMapsModule, NgStyle, CreateTripModalComponent, ConfirmationModalComponent, CommonModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })

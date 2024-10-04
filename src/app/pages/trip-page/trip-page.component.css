@@ -1,0 +1,629 @@
+.container{
+    width: 100%;
+   
+}
+
+
+.header{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 300px;
+    gap:1rem;
+    flex: 1 1 0;
+    justify-content: center;
+    margin-top:2rem;
+}
+
+
+.info-header{
+    width:60%;
+    height: 100%;
+    border-radius: 20px;
+    position: relative;
+    transition: 0.3s ease-in-out;
+}
+
+.image-container{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 20px;
+    transition: 0.3s ease-in-out;
+    display: flex;
+    text-align: left;
+}
+
+
+
+
+
+
+.image-container>img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1.3);
+    transition: 0.3s ease-in-out;
+    object-fit:cover;
+    animation: zoom 2.5s ease-in 0.5s forwards;
+}
+
+
+@keyframes zoom{
+    0%{
+        transform: scale(1);
+    }
+    100%{
+        transform: scale(1.15);
+    }
+}
+
+
+.info-container{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    align-items: end;
+    justify-content: end;
+    text-align: end;
+    position: absolute;
+    z-index: 100;
+    padding:1rem;
+    transform: translateY(-100%);
+    color: white;
+    background: rgb(0,0,0);
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.701) 0%, rgba(0,0,0,0) 100%);
+    border-radius: 20px;
+    transition: 0.3s ease-in-out;
+    gap:0.75rem;
+}
+
+.info-container>div{
+    padding: 0;
+    margin: 0;
+    transition: 0.3s ease-in-out;
+}
+
+
+.info-header:hover{
+    transform: scale(1.005);
+}
+
+.info-header:hover > .image-container > img{
+    scale:1.1
+}
+
+
+.map-header{
+    width: 30%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 20px;
+}
+
+.trip-container{
+    display: flex;
+    width: 100%;
+    gap:1rem;
+    flex: 1 1 0;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.trip-planner{
+    width: 70%;
+    background-color: white;
+    padding:1rem;
+}
+
+
+.share-section{
+
+    padding:1rem;
+    width: 20%;
+}
+
+
+.user{
+    display: flex;
+    width: 100%;
+    max-width: 100%;
+    margin-block:1rem;
+    background-color: var(--white);
+    padding:0.5rem;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+    height: 50px;
+    justify-content: space-between;
+    align-items: center;
+    text-wrap:wrap;
+    overflow: hidden;
+}
+
+.left{
+    display: flex;
+    align-items: center;
+    gap:1rem;
+    text-overflow: clip;
+    max-width: 80%;
+}
+
+.profile-photos{
+    width: 35px;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.profile-name{
+    font-size: 1.1rem;
+    font-weight: 800;
+}
+
+.profile-email{
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--black-300);
+}
+
+.profile-email{
+    display: none;
+}
+
+.user:hover .profile-email{
+    display: block;
+}
+
+.add-input{
+    background-color: var(--black-300);
+    padding:1rem;
+    border-radius: 15px 15px 0px 0px;
+    cursor: pointer;
+    display: flex;
+    gap:1rem;
+    align-items: center;
+    transition: 0.3s ease-in-out;
+    margin-top:1rem;
+
+}   
+
+
+.search-icon{
+    height: 35px;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    transition: 0.3s ease-in-out;
+}
+
+.add-input:hover{
+    background-color: var(--black-400);
+}
+
+
+.rotate45{
+    transform: rotate(45deg);
+}
+
+.input-active{
+    width: 100%;
+    height: 100%;
+}
+
+.input-active>input{
+    width: 90%;
+    height: 35px;
+    border-radius: 10px;
+    border:0rem;
+    padding:0.5rem;
+    font-size: larger;
+}
+
+h4{
+    font-size: 1.4rem;
+}
+
+.input-active>input:hover, .input-active:focus{
+    border:0px;
+}
+
+
+.input-inactive{
+    width: 100%;
+}
+
+
+.add-button{
+    border:2px solid black;
+    border-radius: 5px;
+    
+}
+
+
+.add-icon{
+    width: 30px;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    border:0px;
+    transition: 0.1s ease-in-out;
+}
+
+.add-icon:hover{
+    scale: 1.1;
+    opacity: 0.95;
+    background-color: var(--black-400);
+}
+
+.searchList-container{
+    background-color: rgb(243, 243, 243);
+    padding:0.5rem 1rem;
+    border-radius: 0px 0px 15px 15px;
+}
+
+.darker{
+    background-color: rgb(243, 243, 243);
+    
+}
+
+
+.trip-planner{
+    border-radius: 15px;
+    padding:1rem;
+}
+
+
+.days-info{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: var(--box-shadow-1);
+    padding:1rem;
+    border-radius: 15px;
+}
+
+.days-info h2{
+    padding:1rem;
+}
+
+.dates{
+    display: flex;
+    gap:0.25rem;
+    align-items: center;
+}
+
+.dates>div{
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.dates .date{
+    padding:0.5rem;
+    display: flex;
+    align-items: center;
+    gap:0.5rem;
+    align-items: center;
+    border-bottom: 1px solid var(--black-700);
+}
+
+.dates .date img{
+    width: 20px;
+    height: 20px;
+}
+
+.day-card{
+    margin-block:1rem;
+    box-shadow: var(--box-shadow-1);
+    border-radius: 15px;
+
+}
+
+.day-header{
+    padding:1rem;
+    border-radius: 15px 15px 0px 0px;
+    display: flex;
+    justify-content: space-between;
+    cursor:pointer;
+    z-index: 10;
+}
+
+.day-image-container{
+    width: 100%;
+    padding:1rem;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.day-image-container img{
+    height: 100%;
+    width: 100%;
+    object-fit:cover;
+    border-radius: 15px;
+}   
+
+.close-image{
+    position: absolute;
+    padding:0.5rem;
+    margin:1rem;
+    opacity: 0.4;
+}
+
+.day-header div img{
+    width: 20px;
+    aspect-ratio: 1/1;
+    rotate: 90deg;
+    
+}
+
+.day-header div{
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    font-size: large;
+}
+
+.index{
+    padding:0.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: var(--black-900);
+    color:white;
+    width: 30px;
+    height: 30px;
+}
+
+
+.day-info{
+    border-radius: 0px 0px 15px 15px;
+    background-color: var(--white);
+    z-index: 1;
+    height: 0px;
+    overflow: hidden;
+}
+
+.days-info-open{
+    padding:1rem;
+    height: max-content;
+}
+
+.activity-card{
+    width: 100%;
+    margin-block-end: 1rem;
+    display: flex;
+    align-items: center;
+    gap:1rem;
+    cursor: pointer;
+}
+
+/* .activity-card:not(:last-of-type){
+    border-bottom: 1px dashed var(--black-700);
+} */
+
+.icon > img{
+    width: 35px;
+    aspect-ratio: 1/1;
+    padding:0.25rem;
+    display: flex;
+    background-color: white;
+    border-radius: 5px;
+    align-items: center;
+    justify-content: center;
+    object-fit:fill;
+}
+
+.activity-container{
+    display: flex;
+    gap:1rem;
+    align-items: center;
+    background-color: white;
+    padding:0.5rem 1rem;
+    border-radius: 15px;
+    width: 100%;
+}
+
+.activity-info{
+    padding:1rem;
+    border-radius: 10px;
+}
+
+.location-name{
+    font-size: 1.1rem;
+    font-weight: 600;
+    
+}
+
+.location-description{
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--black-400);
+    margin-top: 0.25rem;
+}
+
+
+
+.actions{
+    
+    gap:0.5rem;
+    flex-direction: column;
+    display: none;
+    
+}
+
+
+.activity-card:hover .actions, .askAI{
+    display: flex;
+    
+}
+
+.action-button{
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    padding:0.25rem;
+    cursor: pointer;
+
+}
+
+.action-button:hover{
+    scale: 1.3;
+}
+
+.action-button img{
+    width: 100%;
+    height: 100%;
+}
+
+.edit{
+    border:2px solid rgb(0, 102, 255);
+    background-color: rgba(0, 102, 255, 0.338);
+}
+
+.edit:hover{
+    background-color: rgba(0, 102, 255, 0.861);
+}
+
+.delete{
+    border:2px solid rgb(183, 37, 37);
+    background-color: rgba(183, 37, 37, 0.185);
+}
+
+.delete:hover{
+    background-color: rgba(183, 37, 37, 0.564);
+}
+
+.add{
+    background-color: rgba(0, 0, 0, 0.217);
+}
+
+.add:hover{
+    background-color: rgba(0, 0, 0, 0.516);
+}
+
+.add-activity-buttons{
+    display: flex;
+    gap:1rem;
+}
+
+.askAI img{
+    width: 15px;
+    height: 15px;
+}
+
+.askAI{
+    padding:0.5rem;
+    display: flex;
+    align-items: center;
+    height: 25px;
+    border-radius: 5px;
+}
+
+.askAI:hover{
+    color:black;
+    scale: 1.1;
+}
+
+.activity-left{
+    display: flex;
+    gap:1rem;
+    align-items: center;
+    width: 80%;
+}
+
+.rearrange{
+    cursor:move;
+    display: none;
+}
+
+.activity-card:hover .rearrange{
+    display: block;
+}
+
+.cdk-drag-preview {
+
+    transform: rotate(1deg);    
+    box-shadow: var(--box-shadow-1);
+    border-radius: 15px;
+    rotate: 5deg;
+    opacity: 0.9;   
+  }
+  
+  /* Placeholder styling */
+  .cdk-drag-placeholder {
+    opacity: 1;               /* Make it semi-transparent */
+    border: 2px dashed #ccc;    /* Dashed border */
+    background: none;          
+  }
+
+@media only screen and (max-width: 600px) {
+ 
+    .header{
+        flex-direction: column;
+    } 
+
+    .header div{
+        width: 90%;
+
+    }
+
+    .trip-container{
+        flex-direction: column;
+    }
+
+    .trip-container>div{
+        width: 100%;
+    }
+
+    .days-info{
+        flex-direction: column;
+        padding:0.5rem;
+        gap:0rem;
+        justify-content: center;
+
+    }
+
+    .days-info h2{
+        font-size: 1.5rem;
+        padding:0;
+        margin:0;
+    }
+
+    .dates>div{
+        font-size: 0.8rem;
+        font-weight: 500;
+    }
+
+    .day-card{
+        margin-block:0.5rem;
+    }
+
+
+
+    .activity-card{
+        flex-direction: column;
+        width: 100%;
+        align-items: flex-start;
+    }
+
+    .activity-left{
+        width: 100%;
+    }
+
+    .activity-container{
+        padding:0.25rem;
+        width: 100%;
+    }
+
+    .actions{
+        display: flex;
+        flex-direction: row;
+        align-self: center;
+    }
+
+    .rearrange{
+        display: block;
+    }
+    
+}

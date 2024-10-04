@@ -1,0 +1,26 @@
+<section>
+    <div class="section-container">
+        <div class="img-container">
+            <img src="/assets/logo-inverted.png" alt="WanderWizard Logo">
+        </div>
+        <div class="information">
+            <h2>Planning trips has never been so easy.</h2>
+            <p>
+                Create and share personalized trips with your friends with the help of AI. Planning a does not have to be drag now! 
+            </p>
+        </div>
+        <div class="cta">
+            <button class="start-button" (click)="openModal()">Start Planning a Trip</button>
+            <button class="auth-button" (click)="goToAuth()" > Sign In / Register</button>
+        </div>
+        <div class="more-info">
+            <p>How it works</p>
+            <img src="/assets/left-inverted.png" alt="">
+        </div>
+    </div>  
+    
+</section>  
+<app-landing-page-create-trip-component #modal></app-landing-page-create-trip-component>
+<section>
+    
+</section>

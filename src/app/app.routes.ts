@@ -1,11 +1,13 @@
 import { Routes } from '@angular/router';
-import { LandingComponent } from './landing/landing.component';
-import { HomeComponent } from './home/home.component';
-import { TripPageComponent } from './trip-page/trip-page.component';
-import { AuthGuardService } from './services/auth-guard.service';
+import { AuthPageComponent } from './pages/auth-page/auth-page.component';
+import { HomeComponent } from './pages/home/home.component';
+import { TripPageComponent } from './pages/trip-page/trip-page.component';
+import { AuthGuardService } from './services/Auth/auth-guard.service';
+import { LandingComponent } from './pages/landing/landing.component';
 
 export const routes: Routes = [
     { path: '', component: LandingComponent },
+    { path: 'auth', component: AuthPageComponent },
     { path: 'home', component: HomeComponent, canActivate:[AuthGuardService] },
     {path:'trip/:id',component:TripPageComponent, canActivate:[AuthGuardService]}
 ];
