@@ -13,14 +13,13 @@ import { TripItineraryComponent } from "../../components/trip-itinerary/trip-iti
 
 
 @Component({
-  selector: 'app-trip-page',
+  selector: 'app-trip-page-no-auth',
   standalone: true,
   imports: [GoogleMapsModule, NgClass, FormsModule, EditActivityComponent, AISuggestionsModalComponent, DragDropModule, CommonModule, TripItineraryComponent],
-  templateUrl: './trip-page.component.html',
-  styleUrl: './trip-page.component.css'
+  templateUrl: './trip-page-no-auth.component.html',
+  styleUrl: './trip-page-no-auth.component.css'
 })
-export class TripPageComponent {
-
+export class TripPageNoAuthComponent {
   trip_id: string;
 
   trip: any;
@@ -51,7 +50,7 @@ export class TripPageComponent {
     this.route.paramMap.subscribe(params => {
       this.trip_id = params.get('id')!;
 
-      this.tripService.getTrip(this.trip_id).subscribe({
+      this.tripService.getTripNoUser(this.trip_id).subscribe({
         next: (data) => {
           this.trip = data
           this.storeTripDataforUI(0)
@@ -154,5 +153,3 @@ export class TripPageComponent {
   }
 
 }
-
-

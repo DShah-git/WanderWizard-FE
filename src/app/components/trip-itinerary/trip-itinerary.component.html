@@ -1,40 +1,35 @@
-<div class="trip-planner">
-         
-    <div class="days-info">
+<div class="days-info">
     <h2>Trip Itinerary</h2>
-       <div class="dates">
-            <div class="date">
-                <img src="/assets/calendar.png" alt="">  
-                {{trip.tripModel.days.startDate}} 
-            </div>
-            <div>
-                <b> - </b>
-            </div>
-            <div class="date">
-                <img src="/assets/calendar.png" alt="">
-                {{trip.tripModel.days.endDate}}
-            </div>
-       </div>
-    </div> 
-    @for (day of tripDays; track $index; let dayIDX = $index) {
-        <div class="day-card">
-            <div class="day-header" (click)="openInfo(dayIDX)">
-                <div >
-                    <span class="index">{{day.day}}</span> 
-                    <span>{{day.date}}  </span> 
-                </div>
-                <div>
-                    <img src="/assets/right.png" alt="">
-                </div>
-            </div>
-           
-            <div cdkDropListGroup>
-            
-            <div 
-            cdkDropList 
-            [cdkDropListData]="day.activity"
-            (cdkDropListDropped)="drop($event,$index)" 
-            class="day-info" [ngClass]="{'days-info-open':day.active}">
+    <div class="dates">
+        <div class="date">
+            <img src="/assets/calendar.png" alt="">
+            {{trip.tripModel.days.startDate}}
+        </div>
+        <div>
+            <b> - </b>
+        </div>
+        <div class="date">
+            <img src="/assets/calendar.png" alt="">
+            {{trip.tripModel.days.endDate}}
+        </div>
+    </div>
+</div>
+@for (day of tripDays; track $index; let dayIDX = $index) {
+<div class="day-card">
+    <div class="day-header" (click)="openInfo(dayIDX)">
+        <div>
+            <span class="index">{{day.day}}</span>
+            <span>{{day.date}} </span>
+        </div>
+        <div>
+            <img src="/assets/right.png" alt="">
+        </div>
+    </div>
+
+    <div cdkDropListGroup>
+
+        <div cdkDropList [cdkDropListData]="day.activity" (cdkDropListDropped)="drop($event,$index)" class="day-info"
+            [ngClass]="{'days-info-open':day.active}">
             <!-- @if (day.image.image_path){
                 <div class="day-image-container" 
                 *ngIf="day.active"
@@ -51,62 +46,65 @@
                     <img [src]="day.image.image_path" alt="" *ngIf="day.image_active">
                 </div>
             } -->
-                @for (activity of day.activity; track $index; let activityIDX = $index) {
-                <div class="activity-card" cdkDrag
-                (cdkDragStarted)="dragStarted($event)"
-                (cdkDragEnded)="dragEnded($event)"
-                >
+            @for (activity of day.activity; track $index; let activityIDX = $index) {
+            <div class="activity-card" cdkDrag (cdkDragStarted)="dragStarted($event)"
+                (cdkDragEnded)="dragEnded($event)">
                 @if (activity.editActivityActive==false) {
-                    <div class="activity-left">
-                
-                        
-                        <div class="activity-container">
-                            <div class="icon">
+                <div class="activity-left">
+
+
+                    <div class="activity-container">
+                        <div class="icon">
                             <img [src]="'/assets/places-icon/'+activity.location_type+'.png'" alt="icon">
-                            </div>
-                            <div class="activity-info">
-                                <div class="location-name"> <span style="color:rgb(114, 117, 255)"> {{ activity.activity_location }}</span> | {{ activity.activity_name }}   </div>
-                                
-                                <div class="location-description"> {{ activity.activity_description }}   </div>
-                            </div>
+                        </div>
+                        <div class="activity-info">
+                            <div class="location-name"> <span style="color:rgb(114, 117, 255)"> {{
+                                    activity.activity_location }}</span> | {{ activity.activity_name }} </div>
+
+                            <div class="location-description"> {{ activity.activity_description }} </div>
                         </div>
                     </div>
-                    <div class="rearrange" cdkDragHandle>
-                        <img src="/assets/arrange.png" alt="">
-                    </div>
-                    <div class="actions">
-                        <button class="action-button edit" >
-                            <img src="/assets/edit.png" alt="" (click)="editToggle(dayIDX,activityIDX)">
+                </div>
+                <div class="rearrange" cdkDragHandle>
+                    <img src="/assets/arrange.png" alt="">
+                </div>
+                <div class="actions">
+                    <button class="action-button edit">
+                        <img src="/assets/edit.png" alt="" (click)="editToggle(dayIDX,activityIDX)">
+                    </button>
+                    <button class="action-button delete">
+                        <img src="/assets/delete.png" alt="" (click)="deleteActivity(dayIDX,activityIDX)">
+                    </button>
+                    <div class="add-activity-buttons">
+                        <button class="action-button add" (click)="addActivity(dayIDX,activityIDX)">
+                            <img src="/assets/add2.png" alt="">
                         </button>
-                        <button class="action-button delete">
-                            <img src="/assets/delete.png" alt="" (click)="deleteActivity(dayIDX,activityIDX)">
+                        <button class="add askAI" (click)="askAItoAdd(dayIDX,activityIDX)">
+                            <img src="/assets/add2.png" alt=""> Ask AI
                         </button>
-                        <div class="add-activity-buttons">
-                            <button class="action-button add" (click)="addActivity(dayIDX,activityIDX)">
-                                <img src="/assets/add2.png" alt="">
-                            </button>
-                            <button class="add askAI" (click)="askAItoAdd(dayIDX,activityIDX)">
-                                <img src="/assets/add2.png" alt=""> Ask AI
-                            </button>
-                        </div>
-                        
                     </div>
-                    }
-                    @else{
-                    <div style="width: 100%;">
-                        <app-edit-activity (editToggle)="editToggle(dayIDX,activityIDX)" (updateActivity)="updateActivity(dayIDX,activityIDX)"  (removeActivity)="removeIdAddNotComplete(dayIDX,activityIDX)" [activityData]="activity" ></app-edit-activity>
-                    </div>
-                    }
-                  </div>
-                  
-                    
-                  
-                    
+
+                </div>
+                }
+                @else{
+                <div style="width: 100%;">
+                    <app-edit-activity (editToggle)="editToggle(dayIDX,activityIDX)"
+                        (updateActivity)="updateActivity(dayIDX,activityIDX)"
+                        (removeActivity)="removeIdAddNotComplete(dayIDX,activityIDX)"
+                        [activityData]="activity"></app-edit-activity>
+                </div>
                 }
             </div>
+
+
+
+
+            }
         </div>
     </div>
-    }
 </div>
+}
 
-<app-aisuggestions-modal #modal [inputData]="AISuggestions" [loading]="AILoading" (addSuggestion)="addSuggestion($event)"></app-aisuggestions-modal>
+
+<app-aisuggestions-modal #modal [inputData]="AISuggestions" [loading]="AILoading"
+    (addSuggestion)="addSuggestion($event)"></app-aisuggestions-modal>

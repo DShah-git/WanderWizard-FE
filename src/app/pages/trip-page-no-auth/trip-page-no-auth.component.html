@@ -1,0 +1,39 @@
+<div class="container">
+    <div class="header">
+        <div class="info-header">
+            <div class="image-container">
+                <img [src]="trip.tripModel.image.image_path" alt="" srcset="">
+            </div>
+            <div class="info-container">
+                <div style="font-size: 1rem; font-weight: 400;">
+                    {{trip.tripModel.days.days}} days
+                </div>
+                <div style="font-size: 1.5rem; font-weight: 500;">
+                   {{trip.location}}
+                </div> 
+               <div style="font-size: 3rem; font-weight:600;">
+                {{trip.name}}
+               </div>               
+               
+            </div>
+        </div>
+        <div class="map-header">
+            <google-map width="100%" height="100%"  [options]="options" [center]="{lat: trip.tripModel.latandlong.lat, lng: trip.tripModel.latandlong.lng}">
+                <map-advanced-marker
+                      #markerElem="mapAdvancedMarker"
+                      [position]="{ lat: trip.tripModel.latandlong.lat, lng: trip.tripModel.latandlong.lng }"
+                    />
+            </google-map>
+        </div>
+    </div>
+
+    <div class="trip-container">
+        <div class="trip-planner">  
+            <app-trip-itinerary [trip]="trip"></app-trip-itinerary>
+        </div>      
+        
+       
+    </div>
+
+   
+</div>

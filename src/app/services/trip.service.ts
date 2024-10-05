@@ -30,12 +30,20 @@ export class TripService {
     return this.http.get(this.baseURL+"trip/trip/" +id,{withCredentials:true, headers:{'x-auth':this.token}})
   }
 
+  getTripNoUser(id:string){
+    return this.http.get(this.baseURL+"createTripWithoutUser/trip/" +id)
+  }
+
   shareTrip(body:any){
     return this.http.post(this.baseURL+"trip/share",body,{withCredentials:true, headers:{'x-auth':this.token}})
   }
 
   createTrip(body:any){
     return this.http.post(this.baseURL+"trip/create",body,{withCredentials:true, headers:{'x-auth':this.token}})
+  }
+
+  createTripWithoutUser(body:any){
+    return this.http.post(this.baseURL+"createTripWithoutUser/create",body)
   }
 
   updateTrip(body:any){
@@ -49,4 +57,6 @@ export class TripService {
   getSuggestions(body:any){
     return this.http.post(this.baseURL+"trip/suggestion",body,{withCredentials:true, headers:{'x-auth':this.token}})
   }
+
+
 }
