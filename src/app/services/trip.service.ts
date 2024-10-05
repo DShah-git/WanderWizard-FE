@@ -30,9 +30,6 @@ export class TripService {
     return this.http.get(this.baseURL+"trip/trip/" +id,{withCredentials:true, headers:{'x-auth':this.token}})
   }
 
-  getTripNoUser(id:string){
-    return this.http.get(this.baseURL+"createTripWithoutUser/trip/" +id)
-  }
 
   shareTrip(body:any){
     return this.http.post(this.baseURL+"trip/share",body,{withCredentials:true, headers:{'x-auth':this.token}})
@@ -42,9 +39,6 @@ export class TripService {
     return this.http.post(this.baseURL+"trip/create",body,{withCredentials:true, headers:{'x-auth':this.token}})
   }
 
-  createTripWithoutUser(body:any){
-    return this.http.post(this.baseURL+"createTripWithoutUser/create",body)
-  }
 
   updateTrip(body:any){
     return this.http.patch(this.baseURL+"trip/update",body,{withCredentials:true, headers:{'x-auth':this.token}})
@@ -54,9 +48,26 @@ export class TripService {
     return this.http.post(this.baseURL+"trip/delete",body,{withCredentials:true, headers:{'x-auth':this.token}})
   }
 
-  getSuggestions(body:any){
-    return this.http.post(this.baseURL+"trip/suggestion",body,{withCredentials:true, headers:{'x-auth':this.token}})
+
+
+
+  // ============= This functions can be used without credentials or signup
+
+  
+  getTripNoUser(id:string){
+    return this.http.get(this.baseURL+"createTripWithoutUser/trip/" +id)
   }
 
+  createTripWithoutUser(body:any){
+    return this.http.post(this.baseURL+"createTripWithoutUser/create",body)
+  }
 
+  updateTripWithoutUser(body:any){
+    return this.http.patch(this.baseURL+"createTripWithoutUser/update",body)
+  }
+
+  getSuggestions(body:any){
+    return this.http.post(this.baseURL+"createTripWithoutUser/suggestion",body,{withCredentials:true, headers:{'x-auth':this.token}})
+  }
+  
 }

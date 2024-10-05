@@ -8,7 +8,7 @@ section:nth-of-type(1){
     background-image: url("../../../../public/assets/landing-bg.jpeg");
     background-position: center center;
     background-repeat: no-repeat;
-    background-size:100% 100%;
+    background-size:cover;
     color: rgb(212, 212, 212);
 }
 
@@ -100,4 +100,60 @@ section:nth-of-type(1){
     97% { transform:translateY(0%)}
     99% { transform:translateY(3%) }
     100% { transform:translateY(0); }
+}
+
+@media only screen and (max-width: 600px) {
+    .img-container{
+        width: 240px;
+        height: auto;
+    }
+
+    .information{
+        margin-top: 3rem;
+    }
+
+    .information h2{
+        font-size: 1.75rem;
+    }
+    
+    .information p{
+        font-weight: 400;
+        font-size: 1rem;
+    }
+
+    .cta{
+        display: flex;
+        margin-top: 3rem;
+        flex-direction: column;
+        justify-content: center;
+        align-content: center;
+    }
+    
+    
+    .cta button{
+        margin-block:1rem;
+        font-size: 1rem;
+        font-weight: 700;
+        border: 3px solid var(--black);
+
+    }
+    
+    .start-button{
+        border-radius: 30px;
+        background-color: rgb(225, 239, 254);
+    }
+    
+    .auth-button{
+        border: 1px solid whitesmoke !important;
+        background-color: #061d2c;
+        color:rgb(225, 239, 254);
+    }
+    
+    .more-info{
+        margin-top:5rem;
+        font-size: 1.4rem;
+        font-weight: 600;
+        animation: bounce 2s ease infinite;
+        cursor: pointer;
+    }
 }

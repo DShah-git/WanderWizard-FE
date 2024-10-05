@@ -442,6 +442,11 @@ h4{
     margin-top: 0.25rem;
 }
 
+.action-center{
+    display: flex;
+    gap:1rem;
+    align-items: center;
+}
 
 
 .actions{

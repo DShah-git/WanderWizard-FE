@@ -1,30 +1,32 @@
-.container{
-    width: 100%;
-   
+.container {
+    width: 90%;
+    margin: auto;
 }
 
+.back {
+    margin-top: 1rem;
+}
 
-.header{
+.header {
     display: flex;
-    align-items: center;
     width: 100%;
     height: 300px;
-    gap:1rem;
+    gap: 1rem;
     flex: 1 1 0;
     justify-content: center;
-    margin-top:2rem;
+    margin-top: 2rem;
 }
 
 
-.info-header{
-    width:60%;
+.info-header {
+    flex: 3 0 0;
     height: 100%;
     border-radius: 20px;
     position: relative;
     transition: 0.3s ease-in-out;
 }
 
-.image-container{
+.image-container {
     width: 100%;
     height: 100%;
     overflow: hidden;
@@ -34,596 +36,401 @@
     text-align: left;
 }
 
-
-
-
-
-
-.image-container>img{
+.image-container>img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transform: scale(1.3);
     transition: 0.3s ease-in-out;
-    object-fit:cover;
+    object-fit: cover;
     animation: zoom 2.5s ease-in 0.5s forwards;
 }
 
 
-@keyframes zoom{
-    0%{
+@keyframes zoom {
+    0% {
         transform: scale(1);
     }
-    100%{
+
+    100% {
         transform: scale(1.15);
     }
 }
 
-
-.info-container{
+.info-container {
     display: flex;
     width: 100%;
     height: 100%;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: end;
-    justify-content: end;
-    text-align: end;
     position: absolute;
     z-index: 100;
-    padding:1rem;
+    padding: 1.25rem;
     transform: translateY(-100%);
     color: white;
-    background: rgb(0,0,0);
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.701) 0%, rgba(0,0,0,0) 100%);
+    background: rgb(0, 0, 0);
+    background-color: black;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.701) 0%, rgba(0, 0, 0, 0) 100%);
     border-radius: 20px;
     transition: 0.3s ease-in-out;
-    gap:0.75rem;
 }
 
-.info-container>div{
-    padding: 0;
-    margin: 0;
-    transition: 0.3s ease-in-out;
+.info-container>div {
+    font-size: 2rem;
+    height: min-content;
+    background-color: transparent;
+}
+
+.location-info>div:nth-of-type(1) {
+    font-size: 1.5rem;
+    text-align: end;
+    margin-bottom: 0.5rem;
 }
 
 
-.info-header:hover{
+
+
+
+
+.info-header:hover {
     transform: scale(1.005);
 }
 
-.info-header:hover > .image-container > img{
-    scale:1.1
+.info-header:hover>.image-container>img {
+    scale: 1.1
 }
 
 
-.map-header{
-    width: 30%;
+.map-header {
+    flex: 2 0 0;
     height: 100%;
     overflow: hidden;
     border-radius: 20px;
 }
 
-.trip-container{
+.trip-container {
     display: flex;
-    width: 100%;
-    gap:1rem;
-    flex: 1 1 0;
-    justify-content: center;
+    gap: 1rem;
     margin-top: 2rem;
 }
 
-.trip-planner{
-    width: 70%;
+.trip-planner {
+    flex: 4 0 0;
     background-color: white;
-    padding:1rem;
+    border-radius: 15px;
 }
 
 
-.share-section{
-
-    padding:1rem;
+.share-section {
+    flex: 1 0 0;
+    padding: 1rem;
     width: 20%;
 }
 
 
-.user{
+.users{
     display: flex;
+    flex-direction: column;
+    gap:0.5rem;
     width: 100%;
-    max-width: 100%;
-    margin-block:1rem;
+    justify-content: center;
+}
+
+.user {
+    display: flex;
     background-color: var(--white);
-    padding:0.5rem;
+    padding: 0.5rem;
     border-radius: 15px;
     cursor: pointer;
     transition: 0.3s ease-in-out;
-    height: 50px;
-    justify-content: space-between;
+    min-height: 50px;
+    height: max-content;
+    gap:1rem;
+    justify-content: flex-start;
     align-items: center;
-    text-wrap:wrap;
+    text-wrap: wrap;
     overflow: hidden;
 }
 
-.left{
-    display: flex;
-    align-items: center;
-    gap:1rem;
-    text-overflow: clip;
-    max-width: 80%;
-}
 
-.profile-photos{
+
+.profile-photos {
     width: 35px;
     aspect-ratio: 1/1;
     border-radius: 50%;
     overflow: hidden;
 }
 
-.profile-name{
-    font-size: 1.1rem;
-    font-weight: 800;
+.profile-info{
+    display: flex;
+    flex-direction: column;
+    gap:0.2rem;
+    max-width: 70%;
+    max-height: 100%;
+    text-wrap: wrap;
 }
 
-.profile-email{
+.profile-name {
+    font-size: 1.1rem;
+    line-height: 1.1rem;
+    font-weight: 800;
+    margin:0;
+    padding:0;
+    text-wrap: wrap;
+}
+
+.profile-email {
     font-size: 0.8rem;
+    line-height: 0.8rem;
     font-weight: 600;
     color: var(--black-300);
+    margin:0;
+    padding:0;
+    text-wrap: wrap;
 }
 
-.profile-email{
-    display: none;
-}
 
-.user:hover .profile-email{
-    display: block;
-}
 
-.add-input{
+.add-input {
     background-color: var(--black-300);
-    padding:1rem;
+    padding: 1rem;
     border-radius: 15px 15px 0px 0px;
     cursor: pointer;
     display: flex;
-    gap:1rem;
+    gap: 1rem;
     align-items: center;
     transition: 0.3s ease-in-out;
-    margin-top:1rem;
+    margin-top: 1rem;
 
-}   
+}
 
 
-.search-icon{
+.search-icon {
     height: 35px;
     aspect-ratio: 1/1;
     border-radius: 50%;
     transition: 0.3s ease-in-out;
 }
 
-.add-input:hover{
+.add-input:hover {
     background-color: var(--black-400);
 }
 
 
-.rotate45{
+.rotate45 {
     transform: rotate(45deg);
 }
 
-.input-active{
+.input-active {
     width: 100%;
     height: 100%;
 }
 
-.input-active>input{
+.input-active>input {
     width: 90%;
     height: 35px;
     border-radius: 10px;
-    border:0rem;
-    padding:0.5rem;
+    border: 0rem;
+    padding: 0.5rem;
     font-size: larger;
 }
 
-h4{
+h4 {
     font-size: 1.4rem;
 }
 
-.input-active>input:hover, .input-active:focus{
-    border:0px;
+.input-active>input:hover,
+.input-active:focus {
+    border: 0px;
 }
 
 
-.input-inactive{
+.input-inactive {
     width: 100%;
 }
 
 
-.add-button{
-    border:2px solid black;
+.add-button {
+    border: 2px solid black;
     border-radius: 5px;
-    
+
 }
 
 
-.add-icon{
+.add-icon {
     width: 30px;
     aspect-ratio: 1/1;
     border-radius: 50%;
-    border:0px;
+    border: 0px;
     transition: 0.1s ease-in-out;
 }
 
-.add-icon:hover{
+.add-icon:hover {
     scale: 1.1;
     opacity: 0.95;
     background-color: var(--black-400);
 }
 
-.searchList-container{
+.searchList-container {
     background-color: rgb(243, 243, 243);
-    padding:0.5rem 1rem;
+    padding: 0.5rem 1rem;
     border-radius: 0px 0px 15px 15px;
 }
 
-.darker{
+.to-add {
+    display: flex;
+    align-items: center;
     background-color: rgb(243, 243, 243);
-    
+    justify-content: space-between;
+
 }
 
-
-.trip-planner{
-    border-radius: 15px;
-    padding:1rem;
-}
-
-
-.days-info{
+.days-info {
     width: 100%;
     display: flex;
     justify-content: space-between;
     box-shadow: var(--box-shadow-1);
-    padding:1rem;
+    padding: 1rem;
     border-radius: 15px;
 }
 
-.days-info h2{
-    padding:1rem;
+.days-info h2 {
+    padding: 1rem;
 }
 
-.dates{
+.dates {
     display: flex;
-    gap:0.25rem;
-    align-items: center;
+    gap: 0.25rem;
+    margin-top: 0.5rem;
 }
 
-.dates>div{
+.dates>div {
     font-size: 1.1rem;
     font-weight: 600;
 }
 
-.dates .date{
-    padding:0.5rem;
-    display: flex;
-    align-items: center;
-    gap:0.5rem;
-    align-items: center;
-    border-bottom: 1px solid var(--black-700);
+
+
+
+@media only screen and (max-width: 700px) {
+    .header {
+        flex-direction: column;
+        height: 300px;
+    }
+
+    .info-header {
+        height: 50%;
+    }
+
+    .info-container {
+        padding: 0.5rem;
+    }
+
+    .info-container div {
+        font-size: 1.25rem;
+    }
+
+    .dates {
+        flex-direction: column;
+        gap: 0.1rem;
+        margin-top: 0.2rem;
+    }
+
+    .map-header {
+        height: 50%;
+    }
+
+    .location-info div {
+        text-align: left;
+    }
 }
-
-.dates .date img{
-    width: 20px;
-    height: 20px;
-}
-
-.day-card{
-    margin-block:1rem;
-    box-shadow: var(--box-shadow-1);
-    border-radius: 15px;
-
-}
-
-.day-header{
-    padding:1rem;
-    border-radius: 15px 15px 0px 0px;
-    display: flex;
-    justify-content: space-between;
-    cursor:pointer;
-    z-index: 10;
-}
-
-.day-image-container{
-    width: 100%;
-    padding:1rem;
-    border-radius: 15px;
-    overflow: hidden;
-}
-
-.day-image-container img{
-    height: 100%;
-    width: 100%;
-    object-fit:cover;
-    border-radius: 15px;
-}   
-
-.close-image{
-    position: absolute;
-    padding:0.5rem;
-    margin:1rem;
-    opacity: 0.4;
-}
-
-.day-header div img{
-    width: 20px;
-    aspect-ratio: 1/1;
-    rotate: 90deg;
-    
-}
-
-.day-header div{
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-    font-size: large;
-}
-
-.index{
-    padding:0.25rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    background-color: var(--black-900);
-    color:white;
-    width: 30px;
-    height: 30px;
-}
-
-
-.day-info{
-    border-radius: 0px 0px 15px 15px;
-    background-color: var(--white);
-    z-index: 1;
-    height: 0px;
-    overflow: hidden;
-}
-
-.days-info-open{
-    padding:1rem;
-    height: max-content;
-}
-
-.activity-card{
-    width: 100%;
-    margin-block-end: 1rem;
-    display: flex;
-    align-items: center;
-    gap:1rem;
-    cursor: pointer;
-}
-
-/* .activity-card:not(:last-of-type){
-    border-bottom: 1px dashed var(--black-700);
-} */
-
-.icon > img{
-    width: 35px;
-    aspect-ratio: 1/1;
-    padding:0.25rem;
-    display: flex;
-    background-color: white;
-    border-radius: 5px;
-    align-items: center;
-    justify-content: center;
-    object-fit:fill;
-}
-
-.activity-container{
-    display: flex;
-    gap:1rem;
-    align-items: center;
-    background-color: white;
-    padding:0.5rem 1rem;
-    border-radius: 15px;
-    width: 100%;
-}
-
-.activity-info{
-    padding:1rem;
-    border-radius: 10px;
-}
-
-.location-name{
-    font-size: 1.1rem;
-    font-weight: 600;
-    
-}
-
-.location-description{
-    font-size: 0.9rem;
-    font-weight: 500;
-    color: var(--black-400);
-    margin-top: 0.25rem;
-}
-
-
-
-.actions{
-    
-    gap:0.5rem;
-    flex-direction: column;
-    display: none;
-    
-}
-
-
-.activity-card:hover .actions, .askAI{
-    display: flex;
-    
-}
-
-.action-button{
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    padding:0.25rem;
-    cursor: pointer;
-
-}
-
-.action-button:hover{
-    scale: 1.3;
-}
-
-.action-button img{
-    width: 100%;
-    height: 100%;
-}
-
-.edit{
-    border:2px solid rgb(0, 102, 255);
-    background-color: rgba(0, 102, 255, 0.338);
-}
-
-.edit:hover{
-    background-color: rgba(0, 102, 255, 0.861);
-}
-
-.delete{
-    border:2px solid rgb(183, 37, 37);
-    background-color: rgba(183, 37, 37, 0.185);
-}
-
-.delete:hover{
-    background-color: rgba(183, 37, 37, 0.564);
-}
-
-.add{
-    background-color: rgba(0, 0, 0, 0.217);
-}
-
-.add:hover{
-    background-color: rgba(0, 0, 0, 0.516);
-}
-
-.add-activity-buttons{
-    display: flex;
-    gap:1rem;
-}
-
-.askAI img{
-    width: 15px;
-    height: 15px;
-}
-
-.askAI{
-    padding:0.5rem;
-    display: flex;
-    align-items: center;
-    height: 25px;
-    border-radius: 5px;
-}
-
-.askAI:hover{
-    color:black;
-    scale: 1.1;
-}
-
-.activity-left{
-    display: flex;
-    gap:1rem;
-    align-items: center;
-    width: 80%;
-}
-
-.rearrange{
-    cursor:move;
-    display: none;
-}
-
-.activity-card:hover .rearrange{
-    display: block;
-}
-
-.cdk-drag-preview {
-
-    transform: rotate(1deg);    
-    box-shadow: var(--box-shadow-1);
-    border-radius: 15px;
-    rotate: 5deg;
-    opacity: 0.9;   
-  }
-  
-  /* Placeholder styling */
-  .cdk-drag-placeholder {
-    opacity: 1;               /* Make it semi-transparent */
-    border: 2px dashed #ccc;    /* Dashed border */
-    background: none;          
-  }
 
 @media only screen and (max-width: 600px) {
- 
-    .header{
-        flex-direction: column;
-    } 
 
-    .header div{
-        width: 90%;
 
-    }
-
-    .trip-container{
+    .trip-container {
         flex-direction: column;
     }
 
-    .trip-container>div{
+    .trip-container>div {
         width: 100%;
     }
 
-    .days-info{
+    .days-info {
         flex-direction: column;
-        padding:0.5rem;
-        gap:0rem;
+        padding: 0.5rem;
+        gap: 0rem;
         justify-content: center;
-
     }
 
-    .days-info h2{
+    .days-info h2 {
         font-size: 1.5rem;
-        padding:0;
-        margin:0;
+        padding: 0;
+        margin: 0;
     }
 
-    .dates>div{
+    .dates>div {
         font-size: 0.8rem;
         font-weight: 500;
     }
 
-    .day-card{
-        margin-block:0.5rem;
+    .trip-container{
+        flex-direction: column-reverse;
     }
 
-
-
-    .activity-card{
-        flex-direction: column;
-        width: 100%;
-        align-items: flex-start;
+    .share-section{
+        padding: 0;
     }
 
-    .activity-left{
-        width: 100%;
+    .share-section>h3{
+        font-size: 1.25rem;
+        font-weight: 600;
     }
 
-    .activity-container{
-        padding:0.25rem;
-        width: 100%;
-    }
-
-    .actions{
+    .users{
         display: flex;
         flex-direction: row;
-        align-self: center;
+        flex-wrap: wrap;
+        justify-content: start;
+        flex:1 0 0;
     }
 
-    .rearrange{
-        display: block;
+    .user{
+        width: 48%;
+        flex-direction: column;
+        box-shadow: var(--box-shadow-1);
+        
+    }
+
+    .profile-info{
+        display: flex;
+        flex-direction: column;
+        gap:0.2rem;
+        max-width: 100%;
+        height: max-content;
+        text-wrap: wrap;
+        text-align: center;
     }
     
+    .profile-name {
+        font-size: 1.1rem;
+        line-height: 1.1rem;
+        font-weight: 800;
+        margin:0;
+        padding:0;
+        text-wrap: wrap;
+    }
+    
+    .profile-email {
+        font-size: 0.8rem;
+        line-height: 0.8rem;
+        font-weight: 600;
+        color: var(--black-300);
+        margin:0;
+        padding:0;
+        text-wrap: wrap;
+    }
+    
+
 }

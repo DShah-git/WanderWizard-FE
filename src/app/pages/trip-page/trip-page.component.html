@@ -5,107 +5,121 @@
                 <img [src]="trip.tripModel.image.image_path" alt="" srcset="">
             </div>
             <div class="info-container">
-                <div style="font-size: 1rem; font-weight: 400;">
-                    {{trip.tripModel.days.days}} days
+                <div>
+                    <div>
+                        {{trip.tripModel.days.days}} days
+                    </div>
+                    <div class="dates">
+                        <div class="date">
+                            {{trip.tripModel.days.startDate | date:'longDate' }} -
+                        </div>
+
+                        <div class="date">
+                            {{trip.tripModel.days.endDate | date:'longDate'}}
+                        </div>
+                    </div>
                 </div>
-                <div style="font-size: 1.5rem; font-weight: 500;">
-                   {{trip.location}}
-                </div> 
-               <div style="font-size: 3rem; font-weight:600;">
-                {{trip.name}}
-               </div>               
-               
+                <div class="location-info">
+                    <div>
+                        {{trip.name}}
+                    </div>
+                    <div>
+                        {{trip.location}}
+                    </div>
+                </div>
+
+
             </div>
         </div>
         <div class="map-header">
-            <google-map width="100%" height="100%"  [options]="options" [center]="{lat: trip.tripModel.latandlong.lat, lng: trip.tripModel.latandlong.lng}">
-                <map-advanced-marker
-                      #markerElem="mapAdvancedMarker"
-                      [position]="{ lat: trip.tripModel.latandlong.lat, lng: trip.tripModel.latandlong.lng }"
-                    />
+            <google-map width="100%" height="100%" [options]="options"
+                [center]="{lat: trip.tripModel.latandlong.lat, lng: trip.tripModel.latandlong.lng}">
+                <map-advanced-marker #markerElem="mapAdvancedMarker"
+                    [position]="{ lat: trip.tripModel.latandlong.lat, lng: trip.tripModel.latandlong.lng }" />
             </google-map>
         </div>
     </div>
+</div>
 
-    <div class="trip-container">
-        <div class="trip-planner">  
-            <app-trip-itinerary [trip]="trip"></app-trip-itinerary>
-        </div>      
-        
-        <div class="share-section">
-            <h3>People on this trip</h3>
-            @for (user of trip.users; track $index) {
-                <div class="user">
-                    <div class="left">
-                        <div class="profile-photos">
-                            <img [src]="user.image" alt="">
-                        </div>
-                        <div class="profile-info">
-                            <div class="profile-name">{{user.name}}</div>
-                            <div class="profile-email">{{user.email}}</div>
-                        </div>
-                    </div>
-                    
-                    
-                </div>
-            }
-            <div class="user">
-                <div class="left">   
-                    <div class="profile-photos">
-                        <img [src]="trip.owner.image" alt="">
-                    </div>
-                    <div class="profile-info">
-                        <div class="profile-name">You</div>
-                    </div>
-                </div>
-            </div>
-            @if (trip.tripModel.sharedView == false) {
-                <div class="add-input" >
-                
-                    @if (searchInput==false) {
-                        
-                        <div class="input-inactive" (click)="activateSearch()">
-                            <h4>Click to add a user to this trip</h4>
-                        </div>
-                    }
-                    @else {
-                        <div class="input-active">
-                            <input type="text" name="search" autocomplete="false" id="search" [(ngModel)]="searchText"  (ngModelChange)="onSearchTextChange($event)">
-                        </div>
-                    }
-                    <div  (click)="toggleSearch()">
-                        <img src="/assets/add.png" class="search-icon" [ngClass]="{rotate45: searchInput}">
-                    </div>
-                    
-                </div>
-            }
-            
-            @if (searchResult.length>0) {
-    
-                <div class="searchList-container">
-                    @for (user of searchResult; track $index) {
-                        <div class="user darker">
-                            <div class="left">
-                                <div class="profile-photos">
-                                    <img [src]="user.image" alt="">
-                                </div>
-                                <div class="profile-info">
-                                    <div class="profile-name">{{user.name}}</div>
-                                    <div class="profile-email">{{user.email}}</div>
-                                </div>
-                            </div>
-                            
-                            <div class="right">
-                                <img src="/assets/add.png" class="add-icon" (click)="addUser(user)">
-                            </div>
-                            
-                        </div>
-                        
-                    }
-                </div>
-            }
-        </div>
+<div class="container trip-container" >
+    <div class="trip-planner">
+        <app-trip-itinerary [trip]="trip"></app-trip-itinerary>
     </div>
 
-   
+    <div class="share-section">
+        <h3>People on this trip</h3>
+        <div class="users">
+            @for (user of trip.users; track $index) {
+            <div class="user">
+                
+                    <div class="profile-photos">
+                        <img [src]="user.image" alt="">
+                    </div>
+                    <div class="profile-info">
+                        <div class="profile-name">{{user.name}}</div>
+                        <div class="profile-email">{{user.email}}</div>
+                    </div>
+                
+
+
+            </div>
+            }    
+            
+        </div>
+        <div class="user" style="margin-top:0.5rem;">
+            <div class="profile-photos">
+                <img [src]="trip.owner.image" alt="">
+            </div>
+            <div class="profile-info">
+                <div class="profile-name">You</div>
+            </div>    
+        </div>
+        @if (trip.tripModel.sharedView == false) {
+        <div class="add-input">
+
+            @if (searchInput==false) {
+
+            <div class="input-inactive" (click)="activateSearch()">
+                <h4>Click to add a user to this trip</h4>
+            </div>
+            }
+            @else {
+            <div class="input-active">
+                <input type="text" name="search" autocomplete="false" id="search" [(ngModel)]="searchText"
+                    (ngModelChange)="onSearchTextChange($event)">
+            </div>
+            }
+            <div (click)="toggleSearch()">
+                <img src="/assets/add.png" class="search-icon" [ngClass]="{rotate45: searchInput}">
+            </div>
+
+        </div>
+        }
+
+        @if (searchResult.length>0) {
+
+        <div class="searchList-container">
+            @for (user of searchResult; track $index) {
+            <div class="to-add">
+                <div class="user">
+                    <div class="profile-photos">
+                        <img [src]="user.image" alt="">
+                    </div>
+                    <div class="profile-info">
+                        <div class="profile-name">{{user.name}}</div>
+                        <div class="profile-email">{{user.email}}</div>
+                    </div>
+                </div>
+                <div class="right">
+                    <img src="/assets/add.png" class="add-icon" (click)="addUser(user)">
+                </div>
+
+            </div>
+
+            }
+        </div>
+        }
+    </div>
 </div>
+
+

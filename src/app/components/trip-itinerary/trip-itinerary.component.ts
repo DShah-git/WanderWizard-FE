@@ -16,6 +16,7 @@ import { AISuggestionsModalComponent } from '../aisuggestions-modal/aisuggestion
 export class TripItineraryComponent implements OnInit {
 
   @Input() trip: any;
+  @Input() loggedIn:boolean=true;
   tripDays: any;
 
   constructor(private tripService: TripService, private titleService: Title) { }
@@ -37,27 +38,52 @@ export class TripItineraryComponent implements OnInit {
   updateActivity(dayIndex: number, activityIndex: number) {
     this.trip.tripModel.trip = this.tripDays
     this.editToggle(dayIndex, activityIndex)
+    
+    if(this.loggedIn){
+      this.tripService.updateTrip(this.trip).subscribe({
+        next: (data: any) => {
+          this.trip = data.trip
+          this.storeTripDataforUI(dayIndex)
+        },
+        error: () => { }
+      })
+    }else{
+      this.tripService.updateTripWithoutUser(this.trip).subscribe({
+        next: (data: any) => {
+          this.trip = data.trip
+          this.storeTripDataforUI(dayIndex)
+        },
+        error: () => { }
+      })
+    }
 
-    this.tripService.updateTrip(this.trip).subscribe({
-      next: (data: any) => {
-        this.trip = data.trip
-        this.storeTripDataforUI(dayIndex)
-      },
-      error: () => { }
-    })
+
   }
 
 
   deleteActivity(dayIndex: number, activityIndex: number) {
     this.tripDays[dayIndex].activity.splice(activityIndex, 1);
-    this.tripService.updateTrip(this.trip).subscribe({
-      next: (data: any) => {
-        this.trip = data.trip
-        this.storeTripDataforUI(dayIndex)
-
-      },
-      error: () => { }
-    })
+    if(this.loggedIn){
+      this.tripService.updateTrip(this.trip).subscribe({
+        next: (data: any) => {
+          this.trip = data.trip
+          this.storeTripDataforUI(dayIndex)
+  
+        },
+        error: () => { }
+      })
+    }
+    else{
+      this.tripService.updateTripWithoutUser(this.trip).subscribe({
+        next: (data: any) => {
+          this.trip = data.trip
+          this.storeTripDataforUI(dayIndex)
+  
+        },
+        error: () => { }
+      })
+    }
+    
 
   }
 
@@ -150,14 +176,26 @@ export class TripItineraryComponent implements OnInit {
 
   drop(event: CdkDragDrop<string[]>, index: number): void {
     moveItemInArray(this.tripDays[index].activity, event.previousIndex, event.currentIndex);
-    this.tripService.updateTrip(this.trip).subscribe({
-      next: (data: any) => {
-        this.trip = data.trip
-        this.storeTripDataforUI(index)
-
-      },
-      error: () => { }
-    })
+    if(this.loggedIn){
+      this.tripService.updateTrip(this.trip).subscribe({
+        next: (data: any) => {
+          this.trip = data.trip
+          this.storeTripDataforUI(index)
+  
+        },
+        error: () => { }
+      })
+    }else{
+      this.tripService.updateTripWithoutUser(this.trip).subscribe({
+        next: (data: any) => {
+          this.trip = data.trip
+          this.storeTripDataforUI(index)
+  
+        },
+        error: () => { }
+      })
+    }
+    
   }
 
   dragStarted(event: any): void {

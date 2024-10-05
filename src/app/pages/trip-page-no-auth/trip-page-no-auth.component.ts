@@ -25,11 +25,6 @@ export class TripPageNoAuthComponent {
   trip: any;
 
   tripDays: any;
-  tempData: string = "";
-
-  searchText: string = ''
-
-  searchResult: any = [];
 
   center!: google.maps.LatLngLiteral
   options: google.maps.MapOptions = {
@@ -37,8 +32,6 @@ export class TripPageNoAuthComponent {
     zoom: 7,
     controlSize: 2
   }
-
-  searchInput: Boolean = false;
 
   constructor(private route: ActivatedRoute, private tripService: TripService, private userService: UserService, private titleService: Title) {
     this.trip_id = ""
@@ -64,69 +57,9 @@ export class TripPageNoAuthComponent {
   }
 
 
-  activateSearch() {
-    this.searchInput = true;
-    this.searchResult = []
-  }
-
-  toggleSearch() {
-
-    this.searchInput = !this.searchInput
-    this.searchResult = []
-  }
-
-
-  onSearchTextChange(searchString: string) {
-
-    if (searchString.length < 3) {
-      this.searchResult = []
-      return;
-    }
-
-    this.userService.userSearch(searchString).subscribe({
-      next: (data) => {
-
-        this.searchResult = this.removeUserIfExistInList(data)
-
-      },
-      error: (err) => {
-        console.log(err)
-      }
-    })
-  }
-
-
-  removeUserIfExistInList(data: any) {
-
-    for (let i = 0; i < this.trip.users.length; i++) {
-      data = data.filter((user: any) => user._id !== this.trip.users[i]._id);
-    }
-    return data;
-  }
-
-  addUser(user: any) {
-    let body = {
-      trip_id: this.trip._id,
-      user_to_share: user
-    }
-
-    this.tripService.shareTrip(body).subscribe({
-      next: (data: any) => {
-
-        this.trip.users = data.trip.users
-        this.searchResult = this.searchResult.filter((u: any) => u._id !== user._id);
-      },
-      error: (err) => {
-        console.log(err)
-      }
-    })
-
-  }
-
   //use to assign data and some bool flags for basic functionality
   storeTripDataforUI(openIDX: number) {
     this.tripDays = this.trip.tripModel.trip
-    this.tempData = JSON.stringify(this.tripDays)
     this.titleService.setTitle(this.trip.location + " - Wander Wizard");
     for (let i = 0; i < this.tripDays.length; i++) {
       if (i == 0) {

@@ -1,19 +1,38 @@
 <div class="container">
+    <button class="http://localhost:4200/">
+        <a href="/">Back</a>
+    </button>
+</div>
+<div class="container">
     <div class="header">
         <div class="info-header">
             <div class="image-container">
                 <img [src]="trip.tripModel.image.image_path" alt="" srcset="">
             </div>
-            <div class="info-container">
-                <div style="font-size: 1rem; font-weight: 400;">
-                    {{trip.tripModel.days.days}} days
+            <div class="info-container">  
+                <div >
+                    <div>
+                        {{trip.tripModel.days.days}} days
+                    </div>
+                    <div class="dates">
+                        <div class="date">
+                            {{trip.tripModel.days.startDate | date:'longDate' }} -
+                        </div>
+                        
+                        <div class="date">
+                            {{trip.tripModel.days.endDate | date:'longDate'}}
+                        </div>
+                    </div>
                 </div>
-                <div style="font-size: 1.5rem; font-weight: 500;">
-                   {{trip.location}}
-                </div> 
-               <div style="font-size: 3rem; font-weight:600;">
-                {{trip.name}}
-               </div>               
+                <div class="location-info"> 
+                    <div>
+                        {{trip.name}}
+                    </div> 
+                    <div>
+                        {{trip.location}}
+                    </div> 
+                </div>
+                             
                
             </div>
         </div>
@@ -29,10 +48,8 @@
 
     <div class="trip-container">
         <div class="trip-planner">  
-            <app-trip-itinerary [trip]="trip"></app-trip-itinerary>
+            <app-trip-itinerary [trip]="trip" [loggedIn]="false"></app-trip-itinerary>
         </div>      
-        
-       
     </div>
 
    
