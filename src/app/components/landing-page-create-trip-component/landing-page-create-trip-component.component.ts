@@ -133,10 +133,10 @@ export class LandingPageCreateTripComponentComponent {
     }
     
 
-    this.tripService.createTrip(reqBody).subscribe({
+    this.tripService.createTripWithoutUser(reqBody).subscribe({
       next:(data:any)=>{
         console.log(data)
-        window.location.href = "trip/" + data.trip._id
+        window.location.href = "tripitinerary/" + data.trip._id
         this.createLoading = false;
       },
       error:(error)=>{
