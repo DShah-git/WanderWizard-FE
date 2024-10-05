@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { CookieService } from 'ngx-cookie-service';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,8 @@ export class UserService {
   constructor(private http:HttpClient, private cookieService:CookieService) { }
 
   readonly root_url:string = environment.dev_url 
+
+  private jwtHelper = new JwtHelperService();
 
   login(email:string,password:string){
   
@@ -24,10 +27,8 @@ export class UserService {
   isLoggedIn():boolean{
     let AuthCookie = this.cookieService.get("authToken")
     if(!AuthCookie) return false;
-    console.log(!this.tokenExpired(AuthCookie))
-    return !this.tokenExpired(AuthCookie)
-
-
+    
+    return !this.jwtHelper.isTokenExpired(AuthCookie);
   }
 
   private tokenExpired(token: string) {
