@@ -51,10 +51,10 @@ export class NavBarComponent{
   }
 
   logout(){
+    
     this.cookieService.delete("authToken")
     localStorage.removeItem("userData")
-
-    location.href="/"
+    location.reload()
   }
    
 }
