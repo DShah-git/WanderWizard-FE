@@ -29,5 +29,9 @@ export class LandingComponent{
     this.modal?.open()
   }
 
+  scroll(el: HTMLElement) {
+    el.scrollIntoView();
+}
+
 
 }

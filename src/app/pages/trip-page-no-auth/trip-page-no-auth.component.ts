@@ -3,11 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { TripService } from '../../services/trip.service';
 import { GoogleMapsModule } from "@angular/google-maps";
 import { CommonModule, NgClass } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { UserService } from '../../services/user.service';
-import { EditActivityComponent } from "../../components/edit-activity/edit-activity.component";
-import { AISuggestionsModalComponent } from "../../components/aisuggestions-modal/aisuggestions-modal.component";
-import { CdkDragDrop, DragDropModule, moveItemInArray } from '@angular/cdk/drag-drop';
+
 import { Title } from "@angular/platform-browser";
 import { TripItineraryComponent } from "../../components/trip-itinerary/trip-itinerary.component";
 
@@ -15,7 +11,7 @@ import { TripItineraryComponent } from "../../components/trip-itinerary/trip-iti
 @Component({
   selector: 'app-trip-page-no-auth',
   standalone: true,
-  imports: [GoogleMapsModule, NgClass, FormsModule, EditActivityComponent, AISuggestionsModalComponent, DragDropModule, CommonModule, TripItineraryComponent],
+  imports: [GoogleMapsModule, NgClass, CommonModule, TripItineraryComponent],
   templateUrl: './trip-page-no-auth.component.html',
   styleUrl: './trip-page-no-auth.component.css'
 })
@@ -33,8 +29,9 @@ export class TripPageNoAuthComponent {
     controlSize: 2
   }
 
-  constructor(private route: ActivatedRoute, private tripService: TripService, private userService: UserService, private titleService: Title) {
+  constructor(private route: ActivatedRoute, private tripService: TripService, private titleService: Title) {
     this.trip_id = ""
+  
   }
 
 
@@ -42,11 +39,21 @@ export class TripPageNoAuthComponent {
 
     this.route.paramMap.subscribe(params => {
       this.trip_id = params.get('id')!;
-
+      
       this.tripService.getTripNoUser(this.trip_id).subscribe({
         next: (data) => {
+          
           this.trip = data
           this.storeTripDataforUI(0)
+          
+          let localSavedTrips = JSON.parse(localStorage.getItem("trips")!)
+          console.log(this.trip)
+          if(localSavedTrips){
+            localSavedTrips.push(this.trip_id)
+            localStorage.setItem("trips",localSavedTrips)
+          }else{
+            localStorage.setItem("trips",JSON.stringify([this.trip_id]))
+          }
         },
         error: (err) => {
           console.log(err)
