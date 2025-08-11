@@ -6,11 +6,11 @@ section:nth-of-type(1){
     margin:auto;
     padding-top:6rem;
     background: linear-gradient(0deg, rgba(0,28,111,1) 0%, rgba(0,14,55,1) 100%);
-    background-image: url("../../../../public/assets/landing-bg.png");
+    background-image: url("../../../../public/assets/download.png");
     background-position: center center;
     background-repeat: no-repeat;
-    background-size: 100% 100%;
-    color: rgb(212, 212, 212);
+    background-size: cover;
+
 }
 
 
@@ -23,7 +23,7 @@ section:nth-of-type(1){
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
+    color:white;
 }
 
 .img-container{
@@ -158,11 +158,21 @@ h4{
     color: #666;
   }
 
+
+  @media only screen and (max-width: 800px) {
+     h4{
+        text-wrap: wrap;
+        max-width: 95%;
+    }
+  }
+
 @media only screen and (max-width: 600px) {
     .img-container{
         width: 240px;
         height: auto;
     }
+
+   
 
     .information{
         margin-top: 3rem;
